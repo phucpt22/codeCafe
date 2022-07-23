@@ -6,6 +6,8 @@
 package com.coffee.ui;
 
 import com.coffee.dao.NhanVienDAO;
+import com.coffee.utils.Auth;
+import com.coffee.utils.MsgBox;
 import com.coffee.utils.XImage;
 import com.coffee.utils.utilityHelper;
 import java.awt.Color;
@@ -16,13 +18,13 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     void init(){
         setIconImage(XImage.getAppIcon());
         setLocationRelativeTo(null);
-        setTitle("Hệ thống thay đổi mật khẩu Edusys");
-        //txtUser.setText(Auth.user.getMaNV());
+        setTitle("Hệ thống thay đổi mật khẩu");
+        txtUser.setText(Auth.user.getMaNV());
     }
     public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //init();
+        init();
     }  
     public void doiMatKhau(){
         txtXNpass.setBackground(Color.white);
@@ -30,20 +32,20 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         String matKhau=new String(txtPassCu.getPassword());
         String matKhauMoi=new String(txtPassMoi.getPassword());
         String xacNhanMKM=new String(txtXNpass.getPassword());
-//        if(matKhau.equals(Auth.user.getMatKhau())){
-//            if(matKhauMoi.equals(xacNhanMKM)){
-//                Auth.user.setMatKhau(matKhauMoi);
-//                dao.update(Auth.user);
-//                MsgBox.alert(this, "Đổi mật khẩu thành công!!");
-//                this.dispose();
-//            }else{
-//                txtXNpass.setBackground(Color.pink);
-//                MsgBox.alert(this, "Mật khẩu xác nhận không trùng mật khẩu");
-//            }
-//        }else{
-//            txtPassCu.setBackground(Color.pink);
-//            MsgBox.alert(this, "Mật khẩu cũ nhập không chính xác!");
-//        }
+        if(matKhau.equals(Auth.user.getMatKhau())){
+            if(matKhauMoi.equals(xacNhanMKM)){
+                Auth.user.setMatKhau(matKhauMoi);
+                dao.update(Auth.user);
+                MsgBox.alert(this, "Đổi mật khẩu thành công!!");
+                this.dispose();
+            }else{
+                txtXNpass.setBackground(Color.pink);
+                MsgBox.alert(this, "Mật khẩu xác nhận không trùng mật khẩu");
+            }
+        }else{
+            txtPassCu.setBackground(Color.pink);
+            MsgBox.alert(this, "Mật khẩu cũ nhập không chính xác!");
+        }
     }
     private void huyBo(){
         this.dispose();
