@@ -90,14 +90,14 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     }
    void insert() {
         SanPham model = getModel();
-        try{
+        //try{
             dao.insert(model);
             this.load();
             this.clear();
             MsgBox.alert(this, "Thêm mới thành công!");
-        } catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại!");
-        }
+//        } catch (Exception e) {
+//            MsgBox.alert(this, "Thêm mới thất bại!");
+//        }
     }
 
     //lấy thông tin trên form, cập nhật vào bản ghi CSDL theo maCD
@@ -150,8 +150,8 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         txtTenSP.setText(model.getTenSP());
         txtLoai.setText(model.getLoaiSP()); 
         txtGia.setText(String.valueOf(model.getGia()));
-        txtNgayKM.setText(String.valueOf(model.getNgayKM()));
-        txtNgayHKM.setText(String.valueOf(model.getNgayHetKM()));
+        txtNgayKM.setText(XDate.toString(model.getNgayKM(),"dd/MM/yyyy"));
+        txtNgayHKM.setText(XDate.toString(model.getNgayHetKM(),"dd/MM/yyyy"));
         lblHinh.setToolTipText(model.getHinh());
         if (model.getHinh() != null) {
             lblHinh.setIcon(XImage.read(model.getHinh()));
@@ -576,10 +576,10 @@ public class SanPhamJDialog extends javax.swing.JDialog {
                 utilityHelper.checkNullText(txtNgayHKM)&&
                 utilityHelper.checkNullText(txtNgayKM)&&
                 checkNullHinh()){
-            if(utilityHelper.checkMaCD(txtTenSP)&&
-                    utilityHelper.checkTenCD(txtGia)&&
-                    utilityHelper.checkThoiLuong(txtNgayHKM)&&
-                    utilityHelper.checkHocPhi(txtNgayKM)){
+            if(utilityHelper.checkName(txtTenSP)&&
+                    utilityHelper.checkHocPhi(txtGia)&&
+                    utilityHelper.checkDate(txtNgayHKM)&&
+                    utilityHelper.checkDate(txtNgayKM)){
                 if(checkTrungMa(txtTenSP)){
                     update();
                 }
@@ -634,10 +634,10 @@ public class SanPhamJDialog extends javax.swing.JDialog {
                 utilityHelper.checkNullText(txtNgayHKM)&&
                 utilityHelper.checkNullText(txtNgayKM)&&
                 checkNullHinh()){
-            if(utilityHelper.checkMaCD(txtTenSP)&&
-                    utilityHelper.checkTenCD(txtGia)&&
-                    utilityHelper.checkThoiLuong(txtNgayHKM)&&
-                    utilityHelper.checkHocPhi(txtNgayKM)){
+            if(utilityHelper.checkName(txtTenSP)&&
+                    utilityHelper.checkHocPhi(txtGia)&&
+                    utilityHelper.checkDate(txtNgayHKM)&&
+                    utilityHelper.checkDate(txtNgayKM)){
                 if(checkTrungMa(txtTenSP)){
                     insert();
                 }
