@@ -13,8 +13,8 @@ import java.util.List;
 
 
 public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
-    final String INSERT_SQL = "INSERT INTO SanPham (TenSP, Loai, Gia, NgayKM, NgayHetKM, Hinh) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE SanPham SET Loai, Gia, NgayKM, NgayHetKM, Hinh=? WHERE TenSP=?";
+    final String INSERT_SQL = "INSERT INTO SanPham (TenSP, LoaiSP, Gia, NgayKM, NgayHetKM, Hinh) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE SanPham SET LoaiSP=?, Gia=?, NgayKM=?, NgayHetKM=?, Hinh=? WHERE TenSP=?";
     final String DELETE_SQL = "DELETE FROM SanPham WHERE TenSP=?";
     final String SELECTALL_SQL = "SELECT * FROM SanPham";
     final String SELECTBYID_SQL = "SELECT * FROM SanPham WHERE TenSP=?";
