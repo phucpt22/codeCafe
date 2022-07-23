@@ -20,10 +20,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Admin
- */
 public class SanPhamJDialog extends javax.swing.JDialog {
 
     int index = 0;   //vị trí SanPham đang được chọn
@@ -152,7 +148,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     }
     void setModel(SanPham model) {
         txtTenSP.setText(model.getTenSP());
-        cboLoai.setSelectedItem(model.getLoaiSP());
+        txtLoai.setText(model.getLoaiSP()); 
         txtGia.setText(String.valueOf(model.getGia()));
         txtNgayKM.setText(String.valueOf(model.getNgayKM()));
         txtNgayHKM.setText(String.valueOf(model.getNgayHetKM()));
@@ -167,7 +163,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     SanPham getModel() {
         SanPham model = new SanPham();
         model.setTenSP(txtTenSP.getText());
-        model.setLoaiSP(String.valueOf(cboLoai.getSelectedItem()));
+        model.setLoaiSP(txtLoai.getText());
         model.setGia(Double.valueOf(txtGia.getText()));
         model.setNgayKM(XDate.toDate(txtNgayKM.getText(), "dd/MM/yyyy"));
         model.setNgayHetKM(XDate.toDate(txtNgayHKM.getText(), "dd/MM/yyyy"));
@@ -205,9 +201,9 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         txtNgayKM = new javax.swing.JTextField();
         txtTenSP = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        cboLoai = new javax.swing.JComboBox<>();
         txtGia = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
+        txtLoai = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnInsert = new com.k33ptoo.components.KButton();
         btnNew = new com.k33ptoo.components.KButton();
@@ -249,9 +245,6 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Loại sản phẩm:");
 
-        cboLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setText("Giá:");
 
@@ -280,19 +273,19 @@ public class SanPhamJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel27))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel13)
                     .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNgayKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -724,7 +717,6 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     private com.k33ptoo.components.KButton btnInsert;
     private com.k33ptoo.components.KButton btnNew;
     private com.k33ptoo.components.KButton btnUpdate;
-    private javax.swing.JComboBox<String> cboLoai;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel22;
@@ -743,6 +735,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblHinh;
     private rojerusan.RSTableMetro tblBang;
     private javax.swing.JTextField txtGia;
+    private javax.swing.JTextField txtLoai;
     private javax.swing.JTextField txtNgayHKM;
     private javax.swing.JTextField txtNgayKM;
     private javax.swing.JTextField txtTenSP;
