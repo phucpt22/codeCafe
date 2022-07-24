@@ -124,7 +124,7 @@ public class LoadingJDialog extends javax.swing.JDialog {
     
     private void init() {
         this.setLocationRelativeTo(null);
-        new Timer(25, new ActionListener() {
+        new Timer(17, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int value = pgb_Loading.getValue();

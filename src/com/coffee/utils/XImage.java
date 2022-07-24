@@ -21,7 +21,7 @@ public class XImage {
         return new ImageIcon(url).getImage();
     }
      public static boolean saveLogo(File file){
-     File dir = new File("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\logos");  
+     File dir = new File("src\\logos");  
      // Tạo thư mục nếu chưa tồn tại
      if(!dir.exists()){
         dir.mkdirs();
@@ -39,7 +39,7 @@ public class XImage {
      }
  }
     public static ImageIcon read(String fileName){
-        File path = new File("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\logos",fileName);
-        return new ImageIcon(new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT));
+        File path = new File("src\\logos",fileName);
+        return new ImageIcon(path.getAbsolutePath());
     }
 }

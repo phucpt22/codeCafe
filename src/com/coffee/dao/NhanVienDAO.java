@@ -69,4 +69,9 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String>{
         }
         return list;
     }
+    
+    public List<NhanVien> selectByKeyword(String keyword){
+        String sql="SELECT * FROM NhanVien WHERE HoTen LIKE ? ";
+        return this.selectBySql(sql, "%"+ keyword +"%");    
+    }
 }

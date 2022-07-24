@@ -24,7 +24,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
 
     int index = 0;   //vị trí SanPham đang được chọn
     SanPhamDAO dao = new SanPhamDAO();     
-    JFileChooser fileChooser = new JFileChooser("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QuanLyCafe\\src\\logos");
+    JFileChooser fileChooser = new JFileChooser("src\\logos");
     public SanPhamJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -491,7 +491,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tblBang);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/loupe.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/loupe2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

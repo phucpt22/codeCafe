@@ -72,8 +72,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        kButton1 = new com.k33ptoo.components.KButton();
-        kButton3 = new com.k33ptoo.components.KButton();
+        btnDangNhap = new com.k33ptoo.components.KButton();
+        btnHuy = new com.k33ptoo.components.KButton();
         txtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -166,34 +166,41 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        kButton1.setBorder(null);
-        kButton1.setText("Đăng Nhập");
-        kButton1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        kButton1.setkBackGroundColor(new java.awt.Color(131, 109, 30));
-        kButton1.setkBorderRadius(0);
-        kButton1.setkEndColor(new java.awt.Color(79, 57, 36));
-        kButton1.setkHoverColor(new java.awt.Color(175, 130, 25));
-        kButton1.setkHoverEndColor(new java.awt.Color(146, 130, 95));
-        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton1.setkHoverStartColor(new java.awt.Color(73, 52, 32));
-        kButton1.setkStartColor(new java.awt.Color(164, 150, 121));
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDangNhap.setBorder(null);
+        btnDangNhap.setText("Đăng Nhập");
+        btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        btnDangNhap.setkBackGroundColor(new java.awt.Color(131, 109, 30));
+        btnDangNhap.setkBorderRadius(0);
+        btnDangNhap.setkEndColor(new java.awt.Color(79, 57, 36));
+        btnDangNhap.setkHoverColor(new java.awt.Color(175, 130, 25));
+        btnDangNhap.setkHoverEndColor(new java.awt.Color(146, 130, 95));
+        btnDangNhap.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnDangNhap.setkHoverStartColor(new java.awt.Color(73, 52, 32));
+        btnDangNhap.setkPressedColor(new java.awt.Color(79, 57, 36));
+        btnDangNhap.setkStartColor(new java.awt.Color(164, 150, 121));
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                btnDangNhapActionPerformed(evt);
             }
         });
 
-        kButton3.setBorder(null);
-        kButton3.setText("Hủy");
-        kButton3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        kButton3.setkBackGroundColor(new java.awt.Color(131, 109, 30));
-        kButton3.setkBorderRadius(0);
-        kButton3.setkEndColor(new java.awt.Color(79, 57, 36));
-        kButton3.setkHoverColor(new java.awt.Color(175, 130, 25));
-        kButton3.setkHoverEndColor(new java.awt.Color(146, 130, 95));
-        kButton3.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton3.setkHoverStartColor(new java.awt.Color(73, 52, 32));
-        kButton3.setkStartColor(new java.awt.Color(164, 150, 121));
+        btnHuy.setBorder(null);
+        btnHuy.setText("Hủy");
+        btnHuy.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        btnHuy.setkBackGroundColor(new java.awt.Color(131, 109, 30));
+        btnHuy.setkBorderRadius(0);
+        btnHuy.setkEndColor(new java.awt.Color(79, 57, 36));
+        btnHuy.setkHoverColor(new java.awt.Color(175, 130, 25));
+        btnHuy.setkHoverEndColor(new java.awt.Color(146, 130, 95));
+        btnHuy.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnHuy.setkHoverStartColor(new java.awt.Color(73, 52, 32));
+        btnHuy.setkPressedColor(new java.awt.Color(79, 57, 36));
+        btnHuy.setkStartColor(new java.awt.Color(164, 150, 121));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         txtPass.setBackground(new java.awt.Color(233, 225, 193));
         txtPass.setForeground(new java.awt.Color(128, 110, 80));
@@ -211,7 +218,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +236,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
@@ -253,8 +260,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -274,10 +281,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         dangNhap();
-    }//GEN-LAST:event_kButton1ActionPerformed
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        this.ketThuc();
+    }//GEN-LAST:event_btnHuyActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -322,6 +333,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.k33ptoo.components.KButton btnDangNhap;
+    private com.k33ptoo.components.KButton btnHuy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,8 +345,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton3;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

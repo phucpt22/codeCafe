@@ -569,7 +569,7 @@
                   <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/coffee/icon/loupe.png"/>
+                  <Image iconType="3" name="/com/coffee/icon/loupe2.png"/>
                 </Property>
               </Properties>
               <Events>
