@@ -36,8 +36,16 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String manv = txtUser.getText();
         String matkhau = new String(txtPass.getPassword());
         NhanVien nhanVien = dao.selectById(manv);
-        if(nhanVien == null){
+        if(!nhanVien.getMaNV().equals(manv)){
             MsgBox.alert(this, "Sai tên đăng nhập!");
+        }else if(nhanVien == null){
+            MsgBox.alert(this, "Sai tên đăng nhập!");    
+        }else if(manv.equals("")){
+            MsgBox.alert(this, "Thiếu tên đăng nhập!");    
+        }else if(matkhau.equals("")){
+            MsgBox.alert(this, "Thiếu mật khẩu!");    
+        }else if(matkhau.equals("") && manv.equals("")){
+            MsgBox.alert(this, "Thiếu mã nhân viên và mật khẩu!");    
         }else{
             if(!nhanVien.getMatKhau().equals(matkhau)){
                 MsgBox.alert(this, "Sai mật khẩu");
@@ -75,6 +83,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         btnDangNhap = new com.k33ptoo.components.KButton();
         btnHuy = new com.k33ptoo.components.KButton();
         txtPass = new javax.swing.JPasswordField();
+        chkHideShowPass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -206,6 +215,15 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtPass.setForeground(new java.awt.Color(128, 110, 80));
         txtPass.setBorder(null);
 
+        chkHideShowPass.setBackground(new java.awt.Color(233, 225, 193));
+        chkHideShowPass.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        chkHideShowPass.setText("Hiện mật khẩu");
+        chkHideShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHideShowPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -235,9 +253,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                                 .addContainerGap(20, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(chkHideShowPass)
+                                        .addGap(10, 10, 10)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -251,14 +272,15 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPass))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chkHideShowPass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,6 +310,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         this.ketThuc();
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void chkHideShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHideShowPassActionPerformed
+        if(chkHideShowPass.isSelected()){
+            txtPass.setEchoChar((char)0);
+        }else{
+            txtPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_chkHideShowPassActionPerformed
     
     /**
      * @param args the command line arguments
@@ -335,6 +365,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnDangNhap;
     private com.k33ptoo.components.KButton btnHuy;
+    private javax.swing.JCheckBox chkHideShowPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
