@@ -15,6 +15,8 @@ import com.coffee.utils.utilityHelper;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.io.File;
+import java.util.Date;
+
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
@@ -117,16 +119,19 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     //load lại bảng
     //xóa trắng form, chuyển sang insertable
     void delete() {
-        if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
-            String masp = txtTenSP.getText();
-            try {
-                dao.delete(masp);
-                this.load();
-                this.clear();
-                MsgBox.alert(this, "Xóa thành công!");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Xóa thất bại!");
-            }
+        if(!Auth.isManager()){
+            MsgBox.alert(this, "Bạn không có quyền xóa sản phẩm !");
+        }
+        else{
+                try {
+                    String masp = String.valueOf(txtTenSP.getText());
+                    dao.delete(masp);
+                    this.load();
+                    this.clear();
+                    MsgBox.alert(this, "Xóa thành công !");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại !");
+                }
         }
     }
 
@@ -152,6 +157,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         txtGia.setText(String.valueOf(model.getGia()));
         txtNgayKM.setText(XDate.toString(model.getNgayKM(),"dd/MM/yyyy"));
         txtNgayHKM.setText(XDate.toString(model.getNgayHetKM(),"dd/MM/yyyy"));
+        jDateChooser1.setDate(model.getNgayKM());
         lblHinh.setToolTipText(model.getHinh());
         if (model.getHinh() != null) {
             lblHinh.setIcon(XImage.read(model.getHinh()));
@@ -204,6 +210,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         txtGia = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         txtLoai = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         btnInsert = new com.k33ptoo.components.KButton();
         btnNew = new com.k33ptoo.components.KButton();
@@ -248,6 +255,8 @@ public class SanPhamJDialog extends javax.swing.JDialog {
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setText("Giá:");
 
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -256,25 +265,28 @@ public class SanPhamJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNgayHKM, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel29))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNgayKM, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
+                            .addComponent(txtNgayKM, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNgayHKM, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel27))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -293,9 +305,11 @@ public class SanPhamJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel27)
                     .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(txtNgayHKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel28)
+                        .addComponent(txtNgayHKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -573,11 +587,13 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         if(utilityHelper.checkNullText(txtTenSP)&&
                 utilityHelper.checkNullText(txtGia)&&
+                utilityHelper.checkNullText(txtLoai)&&
                 utilityHelper.checkNullText(txtNgayHKM)&&
                 utilityHelper.checkNullText(txtNgayKM)&&
                 checkNullHinh()){
             if(utilityHelper.checkName(txtTenSP)&&
                     utilityHelper.checkHocPhi(txtGia)&&
+                    utilityHelper.checkNullText(txtLoai)&&
                     utilityHelper.checkDate(txtNgayHKM)&&
                     utilityHelper.checkDate(txtNgayKM)){
                 if(checkTrungMa(txtTenSP)){
@@ -646,11 +662,9 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if(Auth.user.isVaiTro()){
+        
             delete();
-        }else{
-            MsgBox.alert(this, "Chỉ quản lý mới được phép xóa");
-        }
+  
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -718,6 +732,7 @@ public class SanPhamJDialog extends javax.swing.JDialog {
     private com.k33ptoo.components.KButton btnNew;
     private com.k33ptoo.components.KButton btnUpdate;
     private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
