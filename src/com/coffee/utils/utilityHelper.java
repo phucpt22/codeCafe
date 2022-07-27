@@ -245,7 +245,7 @@ public class utilityHelper {
     }
 
     //học phí là float >0
-    public static boolean checkHocPhi(JTextField txt) {
+    public static boolean checkSo(JTextField txt) {
         txt.setBackground(white);
         try {
             float hp = Float.parseFloat(txt.getText());
