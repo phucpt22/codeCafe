@@ -1968,11 +1968,11 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(btn_gioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(btn_huongDan, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(btn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -2296,7 +2296,8 @@ public class Main extends javax.swing.JFrame {
     private void listTenSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseClicked
         if(evt.getClickCount()==1){
             int index = listTenSP.getSelectedIndex();
-            //lblTenSP.setText(daobh.get(index).selectTen());
+            List<SanPham> list = daoSP.selectAll();
+            lblTenSP.setText(list.get(index).getTenSP());
 
         }
     }//GEN-LAST:event_listTenSPMouseClicked
@@ -2664,7 +2665,7 @@ public class Main extends javax.swing.JFrame {
         try {
             List<Ban> list = daoB.selectAll();
             for(Ban b : list){
-                model.addElement(b);
+                model.addElement(b.getTenBan());
             }
             
         } catch (Exception e) {
