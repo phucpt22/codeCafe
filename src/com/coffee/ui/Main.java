@@ -224,7 +224,6 @@ public class Main extends javax.swing.JFrame {
         pnl_menuDoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabs1.setBackground(new java.awt.Color(112, 92, 65));
-        tabs1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabs1MouseClicked(evt);
@@ -246,7 +245,7 @@ public class Main extends javax.swing.JFrame {
         tabs1Layout.setHorizontalGroup(
             tabs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabs1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -255,7 +254,7 @@ public class Main extends javax.swing.JFrame {
         tabs1Layout.setVerticalGroup(
             tabs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabs1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(tabs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabs1Layout.createSequentialGroup()
@@ -267,7 +266,6 @@ public class Main extends javax.swing.JFrame {
         pnl_menuDoc.add(tabs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 302, 110));
 
         tabs2.setBackground(new java.awt.Color(112, 92, 65));
-        tabs2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs2.setPreferredSize(new java.awt.Dimension(302, 110));
         tabs2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -290,7 +288,7 @@ public class Main extends javax.swing.JFrame {
         tabs2Layout.setHorizontalGroup(
             tabs2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabs2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
@@ -306,13 +304,12 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(tabs2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel4)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pnl_menuDoc.add(tabs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 302, 110));
 
         tabs3.setBackground(new java.awt.Color(112, 92, 65));
-        tabs3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs3.setPreferredSize(new java.awt.Dimension(302, 110));
         tabs3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,7 +336,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         tabs3Layout.setVerticalGroup(
             tabs3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,13 +348,12 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(tabs3Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel5)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pnl_menuDoc.add(tabs3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 302, 110));
 
         tabs4.setBackground(new java.awt.Color(112, 92, 65));
-        tabs4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs4.setPreferredSize(new java.awt.Dimension(302, 110));
         tabs4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -384,12 +380,12 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel6)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         tabs4Layout.setVerticalGroup(
             tabs4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabs4Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(19, 19, 19))
             .addGroup(tabs4Layout.createSequentialGroup()
@@ -401,7 +397,6 @@ public class Main extends javax.swing.JFrame {
         pnl_menuDoc.add(tabs4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 302, 110));
 
         tabs5.setBackground(new java.awt.Color(112, 92, 65));
-        tabs5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs5.setPreferredSize(new java.awt.Dimension(302, 110));
         tabs5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -428,12 +423,12 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel26)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel8)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         tabs5Layout.setVerticalGroup(
             tabs5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabs5Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(tabs5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabs5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -446,7 +441,6 @@ public class Main extends javax.swing.JFrame {
         pnl_menuDoc.add(tabs5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 302, 110));
 
         tabs6.setBackground(new java.awt.Color(112, 92, 65));
-        tabs6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 204, 178)));
         tabs6.setPreferredSize(new java.awt.Dimension(302, 110));
         tabs6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +467,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel20)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         tabs6Layout.setVerticalGroup(
             tabs6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +478,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(tabs6Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel12)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pnl_menuDoc.add(tabs6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 830, 302, 110));
