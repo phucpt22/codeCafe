@@ -60,7 +60,7 @@ public class BanHangDAO extends CoffeeDAO<BanHang, String>{
                 entity.setSize(rs.getBoolean("Size"));
                 entity.setSoLuong(rs.getInt("SoLuong"));
                 entity.setGhiChu(rs.getString("GhiChu"));
-                
+                list.add(entity);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
