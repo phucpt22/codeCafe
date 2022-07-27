@@ -56,7 +56,7 @@ public class BanDAO extends CoffeeDAO<Ban, String>{
                 Ban entity = new Ban();
                 entity.setTenBan(rs.getString("TenBan"));
                 entity.setGhiChu(rs.getString("GhiChu"));
-                
+                list.add(entity);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
