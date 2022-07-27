@@ -42,6 +42,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         init();
+        this.loadListSanPham();
+        this.loadTableBanHang();
+        this.fillComboBoxBan();
     }
 
     /**
@@ -2029,7 +2032,7 @@ public class Main extends javax.swing.JFrame {
         this.fillTableNV();
         this.row = -1;
         setIconImage(XImage.getAppIcon());
-        //loadBanHang();
+        
           
     }
     
@@ -2193,7 +2196,7 @@ public class Main extends javax.swing.JFrame {
         hienthiten();
         this.loadSP();
         this.setStatus(true);
-        this.loadListSanPham();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
@@ -2622,18 +2625,18 @@ public class Main extends javax.swing.JFrame {
         boolean last = this.index < tblBangDonHang.getRowCount() - 1;
 
     }
-//     void editBanHang() {
-//        try {
-//            String masp = (String) tblBangDonHang.getValueAt(this.index, 0);
-//            BanHang modelbh = daobh.selectById(masp);
-//            if (modelbh != null) {
-//                this.setModel(modelbh);
-//                this.setStatus(false);
-//            }
-//        } catch (Exception e) {
-//            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
-//        }
-//    }
+    void editBanHang() {
+        try {
+            String masp = (String) tblBang.getValueAt(this.index, 0);
+            BanHang model = daobh.selectById(masp);
+            if (model != null) {
+                this.setModelBanHang(model);
+                this.setStatusBanHang(false);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
     void setModelBanHang(BanHang model) {
         lblTenSP.setText(model.getTenSP());
         txtMaSP.setText(model.getMaSP());
