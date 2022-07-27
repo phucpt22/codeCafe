@@ -2171,7 +2171,7 @@ public class Main extends javax.swing.JFrame {
                 utilityHelper.checkNullText(txtLoai)&&
                 checkNullHinh()){
             if(utilityHelper.checkName(txtTenSP)&&
-                    utilityHelper.checkHocPhi(txtGia)&&
+                    utilityHelper.checkSo(txtGia)&&
                     utilityHelper.checkNullText(txtLoai)){
                 if(checkTrungMa(txtTenSP)){
                     update();
@@ -2275,7 +2275,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         if(utilityHelper.checkNullText(txtTenSP)&& utilityHelper.checkNullText(txtGia)&& utilityHelper.checkNullText(txtLoai)&& checkNullHinh()){
-            if(utilityHelper.checkName(txtTenSP)&& utilityHelper.checkNullText(txtLoai)&& utilityHelper.checkHocPhi(txtGia)){
+            if(utilityHelper.checkName(txtTenSP)&& utilityHelper.checkNullText(txtLoai)&& utilityHelper.checkSo(txtGia)){
                 if(checkTrungMa(txtTenSP)){
                     insert();
                 }
