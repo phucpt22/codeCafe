@@ -24,11 +24,20 @@ import com.coffee.utils.utilityHelper;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.TableColumnModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -107,7 +116,7 @@ public class Main extends javax.swing.JFrame {
         btnInsert1 = new com.k33ptoo.components.KButton();
         btnDelete1 = new com.k33ptoo.components.KButton();
         btnUpdate1 = new com.k33ptoo.components.KButton();
-        kButton9 = new com.k33ptoo.components.KButton();
+        btnIN = new com.k33ptoo.components.KButton();
         btnHoaDon = new com.k33ptoo.components.KButton();
         jLabel44 = new javax.swing.JLabel();
         rdoSizeM = new javax.swing.JRadioButton();
@@ -663,7 +672,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        kButton9.setText("kButton1");
+        btnIN.setText("In");
+        btnIN.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnINActionPerformed(evt);
+            }
+        });
 
         btnHoaDon.setText("Xuất HD");
         btnHoaDon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -748,7 +763,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -791,7 +806,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNew1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -2082,7 +2097,7 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    void init(){
+    void init() {
 
         new LoadingJDialog(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
@@ -2095,14 +2110,13 @@ public class Main extends javax.swing.JFrame {
         pnl_tab4.setVisible(false);
         pnl_tab5.setVisible(false);
         pnl_tab6.setVisible(false);
-        
+
         this.fillTableNV();
         this.row = -1;
         setIconImage(XImage.getAppIcon());
-        
-          
+
     }
-    
+
     private void tabs1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs1MouseClicked
         pnl_tab1.setVisible(true);
         pnl_tab2.setVisible(false);
@@ -2111,12 +2125,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab5.setVisible(false);
         pnl_tab6.setVisible(false);
 
-        tabs1.setBackground(new Color(139,118,87));
-        tabs2.setBackground(new Color(112,92,65));
-        tabs3.setBackground(new Color(112,92,65));
-        tabs4.setBackground(new Color(112,92,65));
-        tabs5.setBackground(new Color(112,92,65));
-        tabs6.setBackground(new Color(112,92,65));
+        tabs1.setBackground(new Color(139, 118, 87));
+        tabs2.setBackground(new Color(112, 92, 65));
+        tabs3.setBackground(new Color(112, 92, 65));
+        tabs4.setBackground(new Color(112, 92, 65));
+        tabs5.setBackground(new Color(112, 92, 65));
+        tabs6.setBackground(new Color(112, 92, 65));
 
     }//GEN-LAST:event_tabs1MouseClicked
 
@@ -2128,12 +2142,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab5.setVisible(false);
         pnl_tab6.setVisible(false);
 
-        tabs2.setBackground(new Color(139,118,87));
-        tabs1.setBackground(new Color(112,92,65));
-        tabs3.setBackground(new Color(112,92,65));
-        tabs4.setBackground(new Color(112,92,65));
-        tabs5.setBackground(new Color(112,92,65));
-        tabs6.setBackground(new Color(112,92,65));
+        tabs2.setBackground(new Color(139, 118, 87));
+        tabs1.setBackground(new Color(112, 92, 65));
+        tabs3.setBackground(new Color(112, 92, 65));
+        tabs4.setBackground(new Color(112, 92, 65));
+        tabs5.setBackground(new Color(112, 92, 65));
+        tabs6.setBackground(new Color(112, 92, 65));
     }//GEN-LAST:event_tabs2MouseClicked
 
     private void tabs3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs3MouseClicked
@@ -2144,12 +2158,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab5.setVisible(false);
         pnl_tab6.setVisible(false);
 
-        tabs3.setBackground(new Color(139,118,87));
-        tabs1.setBackground(new Color(112,92,65));
-        tabs2.setBackground(new Color(112,92,65));
-        tabs4.setBackground(new Color(112,92,65));
-        tabs5.setBackground(new Color(112,92,65));
-        tabs6.setBackground(new Color(112,92,65));
+        tabs3.setBackground(new Color(139, 118, 87));
+        tabs1.setBackground(new Color(112, 92, 65));
+        tabs2.setBackground(new Color(112, 92, 65));
+        tabs4.setBackground(new Color(112, 92, 65));
+        tabs5.setBackground(new Color(112, 92, 65));
+        tabs6.setBackground(new Color(112, 92, 65));
     }//GEN-LAST:event_tabs3MouseClicked
 
     private void tabs4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs4MouseClicked
@@ -2160,12 +2174,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab5.setVisible(false);
         pnl_tab6.setVisible(false);
 
-        tabs4.setBackground(new Color(139,118,87));
-        tabs1.setBackground(new Color(112,92,65));
-        tabs2.setBackground(new Color(112,92,65));
-        tabs3.setBackground(new Color(112,92,65));
-        tabs5.setBackground(new Color(112,92,65));
-        tabs6.setBackground(new Color(112,92,65));
+        tabs4.setBackground(new Color(139, 118, 87));
+        tabs1.setBackground(new Color(112, 92, 65));
+        tabs2.setBackground(new Color(112, 92, 65));
+        tabs3.setBackground(new Color(112, 92, 65));
+        tabs5.setBackground(new Color(112, 92, 65));
+        tabs6.setBackground(new Color(112, 92, 65));
     }//GEN-LAST:event_tabs4MouseClicked
 
     private void tabs5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs5MouseClicked
@@ -2176,12 +2190,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab4.setVisible(false);
         pnl_tab6.setVisible(false);
 
-        tabs5.setBackground(new Color(139,118,87));
-        tabs1.setBackground(new Color(112,92,65));
-        tabs2.setBackground(new Color(112,92,65));
-        tabs3.setBackground(new Color(112,92,65));
-        tabs4.setBackground(new Color(112,92,65));
-        tabs6.setBackground(new Color(112,92,65));
+        tabs5.setBackground(new Color(139, 118, 87));
+        tabs1.setBackground(new Color(112, 92, 65));
+        tabs2.setBackground(new Color(112, 92, 65));
+        tabs3.setBackground(new Color(112, 92, 65));
+        tabs4.setBackground(new Color(112, 92, 65));
+        tabs6.setBackground(new Color(112, 92, 65));
     }//GEN-LAST:event_tabs5MouseClicked
 
     private void tabs6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs6MouseClicked
@@ -2192,27 +2206,26 @@ public class Main extends javax.swing.JFrame {
         pnl_tab4.setVisible(false);
         pnl_tab5.setVisible(false);
 
-        tabs6.setBackground(new Color(139,118,87));
-        tabs1.setBackground(new Color(112,92,65));
-        tabs2.setBackground(new Color(112,92,65));
-        tabs3.setBackground(new Color(112,92,65));
-        tabs4.setBackground(new Color(112,92,65));
-        tabs5.setBackground(new Color(112,92,65));
+        tabs6.setBackground(new Color(139, 118, 87));
+        tabs1.setBackground(new Color(112, 92, 65));
+        tabs2.setBackground(new Color(112, 92, 65));
+        tabs3.setBackground(new Color(112, 92, 65));
+        tabs4.setBackground(new Color(112, 92, 65));
+        tabs5.setBackground(new Color(112, 92, 65));
     }//GEN-LAST:event_tabs6MouseClicked
-    
-    void ketThuc(){
-        if(MsgBox.confirm(this, "Bạn muốn kết thúc làm việc ?")){
+
+    void ketThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc ?")) {
             System.exit(0);
         }
     }
-    
+
     private void btn_gioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gioiThieuActionPerformed
         AboutFr a = new AboutFr();
         a.setVisible(true);
     }//GEN-LAST:event_btn_gioiThieuActionPerformed
-   
-        
-    
+
+
     private void btn_doiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doiMatKhauActionPerformed
         new DoiMatKhauJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btn_doiMatKhauActionPerformed
@@ -2222,27 +2235,27 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_thoatActionPerformed
 
     private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
-        if(MsgBox.confirm(this, "Bạn muốn đăng xuất !")){
+        if (MsgBox.confirm(this, "Bạn muốn đăng xuất !")) {
             this.dispose();
             new Main().setVisible(true);
         }
-        
+
         new DangNhapJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
     private void btn_huongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huongDanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_huongDanActionPerformed
-    
+
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        if(utilityHelper.checkNullText(txtTenSP)&&
-                utilityHelper.checkNullText(txtGia)&&
-                utilityHelper.checkNullText(txtLoai)&&
-                checkNullHinh()){
-            if(utilityHelper.checkName(txtTenSP)&&
-                    utilityHelper.checkSo(txtGia)&&
-                    utilityHelper.checkNullText(txtLoai)){
-                if(checkTrungTenSP(txtTenSP)){
+        if (utilityHelper.checkNullText(txtTenSP)
+                && utilityHelper.checkNullText(txtGia)
+                && utilityHelper.checkNullText(txtLoai)
+                && checkNullHinh()) {
+            if (utilityHelper.checkName(txtTenSP)
+                    && utilityHelper.checkSo(txtGia)
+                    && utilityHelper.checkNullText(txtLoai)) {
+                if (checkTrungTenSP(txtTenSP)) {
                     updateSP();
                 }
             }
@@ -2252,20 +2265,20 @@ public class Main extends javax.swing.JFrame {
     private void txtTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimActionPerformed
-    void hienthiten(){
+    void hienthiten() {
         NhanVien model = new NhanVien();
         model.setHoTen(Auth.user.getHoTen());
         lblHoTen.setText(String.valueOf(model.getHoTen()));
 //        if(!Auth.isManager()){
 //            tabs6.setEnabled(false);
 //        }
-        
+
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         hienthiten();
         this.loadSP();
         this.setStatus(true);
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
@@ -2289,14 +2302,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if(utilityHelper.checkNullText(txtMaNV)&&
-                utilityHelper.checkNullText(txtHoTen)&&
-                utilityHelper.checkNullText(txtSoDT)&&
-                utilityHelper.checkNullText(txtDiaChi)&&
-                utilityHelper.checkNullText(txtMatKhau)){
-            if(utilityHelper.checkName(txtHoTen)&&
-                    utilityHelper.checkSDT(txtSoDT)){
-                if(checkTrungMa(txtMaNV)){
+        if (utilityHelper.checkNullText(txtMaNV)
+                && utilityHelper.checkNullText(txtHoTen)
+                && utilityHelper.checkNullText(txtSoDT)
+                && utilityHelper.checkNullText(txtDiaChi)
+                && utilityHelper.checkNullText(txtMatKhau)) {
+            if (utilityHelper.checkName(txtHoTen)
+                    && utilityHelper.checkSDT(txtSoDT)) {
+                if (checkTrungMa(txtMaNV)) {
                     insertNV();
                 }
             }
@@ -2304,22 +2317,22 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        if(utilityHelper.checkNullText(txtMaNV)&&
-                utilityHelper.checkNullText(txtHoTen)&&
-                utilityHelper.checkNullText(txtSoDT)&&
-                utilityHelper.checkNullText(txtDiaChi)&&
-                utilityHelper.checkNullText(txtMatKhau)){
-            if(utilityHelper.checkName(txtHoTen)&&
-                    utilityHelper.checkSDT(txtSoDT)){
-                if(checkTrungMa(txtMaNV)){
+        if (utilityHelper.checkNullText(txtMaNV)
+                && utilityHelper.checkNullText(txtHoTen)
+                && utilityHelper.checkNullText(txtSoDT)
+                && utilityHelper.checkNullText(txtDiaChi)
+                && utilityHelper.checkNullText(txtMatKhau)) {
+            if (utilityHelper.checkName(txtHoTen)
+                    && utilityHelper.checkSDT(txtSoDT)) {
+                if (checkTrungMa(txtMaNV)) {
                     updateNV();
                 }
             }
-        } 
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
-    
+
     private void tblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMousePressed
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
             this.row = tblNhanVien.getSelectedRow();
             this.editNV();
         }
@@ -2331,24 +2344,24 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
             this.selectImage();
         }
     }//GEN-LAST:event_lblHinhMouseClicked
 
     private void tblBangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMousePressed
-        if(evt.getClickCount() == 1){
+        if (evt.getClickCount() == 1) {
             this.index = tblBang.rowAtPoint(evt.getPoint());
             if (this.index >= 0) {
                 this.editSP();
             }
         }
     }//GEN-LAST:event_tblBangMousePressed
-   
+
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
-        if(utilityHelper.checkNullText(txtTenSP)&& utilityHelper.checkNullText(txtGia)&& utilityHelper.checkNullText(txtLoai)&& checkNullHinh()){
-            if(utilityHelper.checkName(txtTenSP)&& utilityHelper.checkNullText(txtLoai)&& utilityHelper.checkSo(txtGia)){
-                if(checkTrungTenSP(txtTenSP)){
+        if (utilityHelper.checkNullText(txtTenSP) && utilityHelper.checkNullText(txtGia) && utilityHelper.checkNullText(txtLoai) && checkNullHinh()) {
+            if (utilityHelper.checkName(txtTenSP) && utilityHelper.checkNullText(txtLoai) && utilityHelper.checkSo(txtGia)) {
+                if (checkTrungTenSP(txtTenSP)) {
                     insertSP();
                 }
             }
@@ -2364,7 +2377,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void listTenSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseClicked
-        if(evt.getClickCount()==1){
+        if (evt.getClickCount() == 1) {
             int index = listTenSP.getSelectedIndex();
             List<SanPham> list = daoSP.selectAll();
             lblTenSP.setText(list.get(index).getTenSP());
@@ -2372,12 +2385,12 @@ public class Main extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_listTenSPMouseClicked
-    
+
     private void btnInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsert1ActionPerformed
-        if(utilityHelper.checkNullText(txtMaSP)){
-                if(checkTrungMaSP(txtMaSP)){
-                    insertBanHang();
-                }
+        if (utilityHelper.checkNullText(txtMaSP)) {
+            if (checkTrungMaSP(txtMaSP)) {
+                insertBanHang();
+            }
         }
     }//GEN-LAST:event_btnInsert1ActionPerformed
 
@@ -2386,19 +2399,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
     private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
-        if(utilityHelper.checkNullText(txtMaSP)){
-                if(checkTrungMaSP(txtMaSP)){
-                    updateBanHang();
-                }
+        if (utilityHelper.checkNullText(txtMaSP)) {
+            if (checkTrungMaSP(txtMaSP)) {
+                updateBanHang();
+            }
         }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
-        
+
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void tblBangDonHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangDonHangMousePressed
-        if(evt.getClickCount()==1){
+        if (evt.getClickCount() == 1) {
             this.index = tblBangDonHang.rowAtPoint(evt.getPoint());
             if (this.index >= 0) {
                 this.editBanHang();
@@ -2410,37 +2423,108 @@ public class Main extends javax.swing.JFrame {
         clearBanHang();
     }//GEN-LAST:event_btnNew1ActionPerformed
 
+    private void btnINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINActionPerformed
+        try {
+            List<BanHang> list = daobh.selectAll();
+            XSSFWorkbook wordkbook = new XSSFWorkbook();
+            XSSFSheet sheet = wordkbook.createSheet("danhsach");
+            XSSFRow row = null;
+            Cell cell = null;
+            row = sheet.createRow(1);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Danh sách sản phẩm đã bán");
+            row = sheet.createRow(7);
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("STT");
+            
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("MaSP");
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("TenBan");
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("TenSP");
+            cell = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Size");
+            cell = row.createCell(5, CellType.STRING);
+            cell.setCellValue("SoLuong");
+            cell = row.createCell(6, CellType.STRING);
+            cell.setCellValue("GhiChu");
+            cell = row.createCell(7, CellType.STRING);
+            cell.setCellValue("TongTien");
+
+            for (int i = 0; i < list.size(); i++) {
+                //Modelbook book =arr.get(i);
+                row = sheet.createRow(7 + i);
+
+                cell = row.createCell(0, CellType.NUMERIC);
+                cell.setCellValue(i + 1);
+
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(list.get(i).getMaSP());
+
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenBan());
+
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(list.get(i).getTenSP());
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(list.get(i).isSize());
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue(list.get(i).getSoLuong());
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue(list.get(i).getGhiChu());
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue(list.get(i).getTongTien());
+            }
+
+            File f = new File("D://danhsachsanpham.xlsx");
+            try {
+                FileOutputStream fis = new FileOutputStream(f);
+                wordkbook.write(fis);
+                fis.close();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(this, "in thanh cong trong ổ D");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Loi mo file");
+        }
+    }//GEN-LAST:event_btnINActionPerformed
+
     /* 
         ------------------------- Form Nhan Vien --------------------------------
-    */
+     */
     NhanVienDAO daoNV = new NhanVienDAO();
     int row = -1;
     int index = 0;
-    
-    void fillTableNV(){
+
+    void fillTableNV() {
         String keyword = txtTimKiem.getText();
         DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
         model.setRowCount(0);// xoas tất cả các hàng trên JTable
         try {
             List<NhanVien> list = daoNV.selectByKeyword(keyword);// đọc dữ liệu từ CSDL
-            for(NhanVien nv : list){
-                Object[] row = {nv.getMaNV(),nv.getHoTen(), nv.getNgaySinh(),
-                    nv.isVaiTro()?"Quản Lý" : "Nhân viên", nv.getSDT(), nv.getDiaChi(),
-                    nv.isGioiTinh()?"Nam" : "Nữ", nv.getMatKhau()
+            for (NhanVien nv : list) {
+                Object[] row = {nv.getMaNV(), nv.getHoTen(), nv.getNgaySinh(),
+                    nv.isVaiTro() ? "Quản Lý" : "Nhân viên", nv.getSDT(), nv.getDiaChi(),
+                    nv.isGioiTinh() ? "Nam" : "Nữ", nv.getMatKhau()
                 };
                 model.addRow(row);
             }
-            if(!Auth.isManager()){
+            if (!Auth.isManager()) {
                 TableColumnModel tableColumn = tblNhanVien.getColumnModel();
                 tableColumn.removeColumn(tableColumn.getColumn(7));
-                
+
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu !");
         }
     }
-    
-    void setForm(NhanVien nv){
+
+    void setForm(NhanVien nv) {
         txtMaNV.setText(nv.getMaNV());
         txtHoTen.setText(nv.getHoTen());
         txtNgaySinh.setDate(nv.getNgaySinh());
@@ -2450,23 +2534,22 @@ public class Main extends javax.swing.JFrame {
         txtDiaChi.setText(nv.getDiaChi());
         rdoNam.setSelected(nv.isGioiTinh());
         rdoNu.setSelected(!nv.isGioiTinh());
-        txtMatKhau.setText(nv.getMatKhau());    
+        txtMatKhau.setText(nv.getMatKhau());
     }
-    
-    NhanVien getForm(){
+
+    NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtMaNV.getText());
         nv.setHoTen(txtHoTen.getText());
-        nv.setNgaySinh(txtNgaySinh.getDate());    
+        nv.setNgaySinh(txtNgaySinh.getDate());
         nv.setVaiTro(rdoQuanLy.isSelected());
         nv.setSDT(txtSoDT.getText());
         nv.setDiaChi(txtDiaChi.getText());
         nv.setGioiTinh(rdoNam.isSelected());
         nv.setMatKhau(new String(txtMatKhau.getPassword()));
-        return nv;       
+        return nv;
     }
-    
-    
+
     public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
         if (daoNV.selectById(txt.getText()) == null) {
@@ -2483,37 +2566,36 @@ public class Main extends javax.swing.JFrame {
         this.clearFormNV();
         this.row = -1;
     }
-    
-    void clearFormNV(){
-       NhanVien nv = new NhanVien();
-       this.setForm(nv);
-       this.row = -1;
+
+    void clearFormNV() {
+        NhanVien nv = new NhanVien();
+        this.setForm(nv);
+        this.row = -1;
     }
-    
-    void editNV(){
+
+    void editNV() {
         String manv = (String) tblNhanVien.getValueAt(this.row, 0);
         NhanVien nv = daoNV.selectById(manv);
         this.setForm(nv);
     }
-    
-    void insertNV(){
-            if (!Auth.isManager()) {
-                MsgBox.alert(this, "Bạn không có quyền thêm nhân viên !");               
+
+    void insertNV() {
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền thêm nhân viên !");
+        } else {
+            try {
+                NhanVien nv = getForm();
+                daoNV.insert(nv);
+                this.fillTableNV();
+                this.clearFormNV();
+                MsgBox.alert(this, "Thêm mới thành công !");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại !");
             }
-            else{
-                try {
-                    NhanVien nv = getForm();
-                    daoNV.insert(nv);
-                    this.fillTableNV();
-                    this.clearFormNV();
-                    MsgBox.alert(this, "Thêm mới thành công !");
-                } catch (Exception e) {
-                    MsgBox.alert(this, "Thêm mới thất bại !");
-                }
-            }                  
+        }
     }
-    
-    void updateNV(){
+
+    void updateNV() {
         NhanVien nv = getForm();
         try {
             daoNV.update(nv);
@@ -2523,17 +2605,15 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Cập nhật thất bại !");
         }
     }
-    
-    void deleteNV(){
-        if(!Auth.isManager()){
+
+    void deleteNV() {
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa nhân viên !");
-        }
-        else{
+        } else {
             String manv = txtMaNV.getText();
-            if(manv.equals(Auth.user.getMaNV())){
+            if (manv.equals(Auth.user.getMaNV())) {
                 MsgBox.alert(this, "Bạn không được xóa chính bạn !");
-            }
-            else if(MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này ?")){
+            } else if (MsgBox.confirm(this, "Bạn thực sự muốn xóa nhân viên này ?")) {
                 try {
                     daoNV.delete(manv);
                     this.fillTableNV();
@@ -2545,22 +2625,21 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /* 
         ------------------------- Form San Pham --------------------------------
-    */
-    
+     */
     SanPhamDAO daoSP = new SanPhamDAO();
     JFileChooser fileChooser = new JFileChooser("src\\logos");
-    
+
     void clearSP() {
         this.setModel(new SanPham());
         this.setStatus(true);
     }
-    
+
     void setModel(SanPham model) {
         txtTenSP.setText(model.getTenSP());
-        txtLoai.setText(model.getLoaiSP()); 
+        txtLoai.setText(model.getLoaiSP());
         txtGia.setText(String.valueOf(model.getGia()));
         txtNgayKM.setDate(model.getNgayKM());
         txtNgayHKM.setDate(model.getNgayKM());
@@ -2568,11 +2647,11 @@ public class Main extends javax.swing.JFrame {
         if (model.getHinh() != null) {
             lblHinh.setIcon(XImage.read(model.getHinh()));
 
-        }else{
+        } else {
             lblHinh.setIcon(XImage.read("noImage.png"));
         }
     }
-    
+
     SanPham getModel() {
         SanPham model = new SanPham();
         model.setTenSP(txtTenSP.getText());
@@ -2583,7 +2662,7 @@ public class Main extends javax.swing.JFrame {
         model.setHinh(lblHinh.getToolTipText());    //lấy tên hình
         return model;
     }
-    
+
     void setStatus(boolean insertable) {
         txtTenSP.setEditable(insertable);
         btnInsert.setEnabled(insertable);
@@ -2592,7 +2671,7 @@ public class Main extends javax.swing.JFrame {
         boolean first = this.index > 0;
         boolean last = this.index < tblBang.getRowCount() - 1;
     }
-    
+
     void editSP() {
         try {
             String masp = (String) tblBang.getValueAt(this.index, 0);
@@ -2605,18 +2684,19 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void selectImage() {
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-            File file = fileChooser.getSelectedFile();   
-            if (XImage.saveLogo(file)) {  
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            if (XImage.saveLogo(file)) {
                 // Hiển thị hình lên form
-                lblHinh.setIcon(XImage.read(file.getName())); 
+                lblHinh.setIcon(XImage.read(file.getName()));
                 lblHinh.setToolTipText(file.getName());
             }
         }
     }
-    void tim(){
+
+    void tim() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
         try {
@@ -2627,8 +2707,8 @@ public class Main extends javax.swing.JFrame {
                     sp.getTenSP(),
                     sp.getLoaiSP(),
                     sp.getGia(),
-                    XDate.toString(sp.getNgayKM(),"dd/MM/yyyy"),
-                    XDate.toString(sp.getNgayHetKM(),"dd/MM/yyyy"),
+                    XDate.toString(sp.getNgayKM(), "dd/MM/yyyy"),
+                    XDate.toString(sp.getNgayHetKM(), "dd/MM/yyyy"),
                     sp.getHinh()
                 };
                 model.addRow(row);
@@ -2637,7 +2717,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void loadSP() {
         DefaultTableModel model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
@@ -2648,8 +2728,8 @@ public class Main extends javax.swing.JFrame {
                     sp.getTenSP(),
                     sp.getLoaiSP(),
                     sp.getGia(),
-                    XDate.toString(sp.getNgayKM(),"dd/MM/yyyy"),
-                    XDate.toString(sp.getNgayHetKM(),"dd/MM/yyyy"),
+                    XDate.toString(sp.getNgayKM(), "dd/MM/yyyy"),
+                    XDate.toString(sp.getNgayHetKM(), "dd/MM/yyyy"),
                     sp.getHinh()
                 };
                 model.addRow(row);
@@ -2658,7 +2738,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     void insertSP() {
         SanPham model = getModel();
         if (!Auth.isManager()) {
@@ -2674,7 +2754,8 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }
-     public boolean checkTrungTenSP(JTextField txt) {
+
+    public boolean checkTrungTenSP(JTextField txt) {
         txt.setBackground(white);
         if (daoSP.selectById(txt.getText()) == null) {
             return true;
@@ -2684,6 +2765,7 @@ public class Main extends javax.swing.JFrame {
             return false;
         }
     }
+
     void updateSP() {
         SanPham model = getModel();
         try {
@@ -2694,7 +2776,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
-    
+
     void deleteSP() {
         if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
             String masp = txtTenSP.getText();
@@ -2708,28 +2790,30 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }
-    public boolean checkNullHinh(){
-        if(lblHinh.getToolTipText()!=null){
+
+    public boolean checkNullHinh() {
+        if (lblHinh.getToolTipText() != null) {
             return true;
-        }else{
+        } else {
             MsgBox.alert(this, "Không được để trống hình.");
             return false;
         }
     }
     /* 
         ------------------------- Form bán hàng --------------------------------
-    */
+     */
     BanHangDAO daobh = new BanHangDAO();
     BanDAO daoB = new BanDAO();
-    void loadTableBanHang(){
+
+    void loadTableBanHang() {
         DefaultTableModel model = (DefaultTableModel) tblBangDonHang.getModel();
         model.setRowCount(0);
         try {
             List<BanHang> list = daobh.selectAll();
             for (BanHang bh : list) {
                 Object[] row = {
-                    bh.getMaSP(),bh.getTenBan(),bh.getTenSP(),bh.isSize()?"M":"L",
-                    bh.getSoLuong(),bh.getGhiChu(),bh.getTongTien()
+                    bh.getMaSP(), bh.getTenBan(), bh.getTenSP(), bh.isSize() ? "M" : "L",
+                    bh.getSoLuong(), bh.getGhiChu(), bh.getTongTien()
                 };
                 model.addRow(row);
             }
@@ -2737,11 +2821,12 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
+
     void loadListSanPham() {
         DefaultListModel model = new DefaultListModel();
         try {
             List<SanPham> list = daoSP.selectAll();
-            for(SanPham sp : list){
+            for (SanPham sp : list) {
                 model.addElement(sp.getTenSP());
             }
             listTenSP.setModel(model);
@@ -2749,6 +2834,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
+
     void setStatusBanHang(boolean insertable) {
         btnInsert.setEnabled(insertable);
         btnUpdate.setEnabled(!insertable);
@@ -2757,6 +2843,7 @@ public class Main extends javax.swing.JFrame {
         boolean last = this.index < tblBangDonHang.getRowCount() - 1;
 
     }
+
     void editBanHang() {
         try {
             String masp = (String) tblBangDonHang.getValueAt(this.index, 0);
@@ -2769,17 +2856,19 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
+
     void setModelBanHang(BanHang model) {
         lblTenSP.setText(model.getTenSP());
         txtMaSP.setText(model.getMaSP());
         txtGhiChu.setText(model.getGhiChu());
         rdoSizeL.setSelected(model.isSize());
         rdoSizeM.setSelected(!model.isSize());
-        cboTenBan.setToolTipText(String.valueOf(model.getMaSP()));    
-        cboTenBan.getModel().setSelectedItem(daoB.selectById(model.getTenBan())); 
+        cboTenBan.setToolTipText(String.valueOf(model.getMaSP()));
+        cboTenBan.getModel().setSelectedItem(daoB.selectById(model.getTenBan()));
         spinerSoLuong.setValue(model.getSoLuong());
         lblTongTien.setText(String.valueOf(model.getTongTien()));
     }
+
     BanHang getModelBanHang() {
         BanHang model = new BanHang();
         model.setTenSP(lblTenSP.getText());
@@ -2791,29 +2880,32 @@ public class Main extends javax.swing.JFrame {
         model.setTenBan(b.getTenBan());
         return model;
     }
-    void clearBanHang(){
+
+    void clearBanHang() {
         BanHang bh = new BanHang();
         setStatusBanHang(true);
     }
-    void fillComboBox(){
+
+    void fillComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboTenBan.getModel();
         model.removeAllElements();
         try {
             List<Ban> list = daoB.selectAll();
-            for(Ban b : list){
+            for (Ban b : list) {
                 model.addElement(b.getTenBan());
             }
-            
+
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy cập dữ liệu");
         }
     }
-    void fillComboBoxBan(){
+
+    void fillComboBoxBan() {
         DefaultComboBoxModel model = new DefaultComboBoxModel<>();
         //model.removeAllElements();
         try {
             List<Ban> list = daoB.selectAll();
-            for(Ban b : list){
+            for (Ban b : list) {
                 model.addElement(b);
             }
             cboTenBan.setModel(model);
@@ -2821,8 +2913,9 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy cập dữ liệu");
         }
     }
+
     void insertBanHang() {
-        try{
+        try {
             BanHang model = getModelBanHang();
             daobh.insert(model);
             this.loadTableBanHang();
@@ -2832,7 +2925,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Thêm mới thất bại!");
         }
     }
-    
+
     void updateBanHang() {
         BanHang model = getModelBanHang();
         try {
@@ -2843,7 +2936,7 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
-    
+
     void deleteBanHang() {
         if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
             String masp = txtMaSP.getText();
@@ -2857,6 +2950,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }
+
     public boolean checkTrungMaSP(JTextField txt) {
         txt.setBackground(white);
         if (daobh.selectById(txt.getText()) == null) {
@@ -2867,6 +2961,7 @@ public class Main extends javax.swing.JFrame {
             return false;
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -2906,6 +3001,7 @@ public class Main extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton btnDelete;
     private com.k33ptoo.components.KButton btnDelete1;
     private com.k33ptoo.components.KButton btnHoaDon;
+    private com.k33ptoo.components.KButton btnIN;
     private com.k33ptoo.components.KButton btnInsert;
     private com.k33ptoo.components.KButton btnInsert1;
     private com.k33ptoo.components.KButton btnNew;
@@ -3003,7 +3099,6 @@ public class Main extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton kButton6;
     private com.k33ptoo.components.KButton kButton7;
     private com.k33ptoo.components.KButton kButton8;
-    private com.k33ptoo.components.KButton kButton9;
     private com.k33ptoo.components.KGradientPanel kGradientPanel10;
     private com.k33ptoo.components.KGradientPanel kGradientPanel11;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;

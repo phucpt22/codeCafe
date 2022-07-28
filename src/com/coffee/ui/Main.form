@@ -850,7 +850,7 @@
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnHoaDon" min="-2" pref="90" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="kButton9" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <Component id="btnIN" min="-2" pref="90" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -902,7 +902,7 @@
                                       <Component id="btnUpdate1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnNew1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="kButton9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnIN" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1103,10 +1103,16 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdate1ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="com.k33ptoo.components.KButton" name="kButton9">
+                        <Component class="com.k33ptoo.components.KButton" name="btnIN">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="kButton1"/>
+                            <Property name="text" type="java.lang.String" value="In"/>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="11" style="1"/>
+                            </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnINActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.k33ptoo.components.KButton" name="btnHoaDon">
                           <Properties>
