@@ -12,17 +12,19 @@ public class BanHang {
     int SoLuong;
     boolean Size;
     String GhiChu;
+    double TongTien;
 
     public BanHang() {
     }
 
-    public BanHang(String MaSP, String TenSP, String TenBan, int SoLuong, boolean Size, String GhiChu) {
+    public BanHang(String MaSP, String TenSP, String TenBan, int SoLuong, boolean Size, String GhiChu, double TongTien) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.TenBan = TenBan;
         this.SoLuong = SoLuong;
         this.Size = Size;
         this.GhiChu = GhiChu;
+        this.TongTien = TongTien;
     }
 
     public String getMaSP() {
@@ -71,6 +73,13 @@ public class BanHang {
 
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
+    }
+    public double getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(double TongTien) {
+        this.TongTien = TongTien;
     }
     
 }
