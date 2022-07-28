@@ -2191,6 +2191,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_thoatActionPerformed
 
     private void btn_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dangXuatActionPerformed
+        if(MsgBox.confirm(this, "Bạn muốn đăng xuất !")){
+            this.dispose();
+            new Main().setVisible(true);
+        }
+        
         new DangNhapJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
@@ -2227,9 +2232,9 @@ public class Main extends javax.swing.JFrame {
         NhanVien model = new NhanVien();
         model.setHoTen(Auth.user.getHoTen());
         lblHoTen.setText(String.valueOf(model.getHoTen()));
-        if(!Auth.isManager()){
-            tabs6.setVisible(false);
-        }
+//        if(!Auth.isManager()){
+//            tabs6.setEnabled(false);
+//        }
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2472,15 +2477,20 @@ public class Main extends javax.swing.JFrame {
     }
     
     void insertNV(){
-            try {
-                NhanVien nv = getForm();
-                daoNV.insert(nv);
-                this.fillTableNV();
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công !");
-            } catch (Exception e) {
-                MsgBox.alert(this, "Thêm mới thất bại !");
-            } 
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Bạn không có quyền thêm nhân viên !");               
+            }
+            else{
+                try {
+                    NhanVien nv = getForm();
+                    daoNV.insert(nv);
+                    this.fillTableNV();
+                    this.clearForm();
+                    MsgBox.alert(this, "Thêm mới thành công !");
+                } catch (Exception e) {
+                    MsgBox.alert(this, "Thêm mới thất bại !");
+                }
+            }                  
     }
     
     void updateNV(){
@@ -2631,14 +2641,20 @@ public class Main extends javax.swing.JFrame {
     
     void insertSP() {
         SanPham model = getModel();
-        //try{
-            daoSP.insert(model);
-            this.loadSP();
-            this.clearSP();
-            MsgBox.alert(this, "Thêm mới thành công!");
-//        } catch (Exception e) {
-//            MsgBox.alert(this, "Thêm mới thất bại!");
-//        }
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Bạn không có quyền thêm nhân viên !");
+        } else {
+            try {
+                daoSP.insert(model);
+                this.loadSP();
+                this.clearSP();
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Thêm mới thất bại!");
+            }
+        }
+        
+
     }
     
     void updateSP() {
