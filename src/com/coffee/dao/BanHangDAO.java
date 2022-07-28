@@ -13,19 +13,19 @@ import java.util.List;
 
 
 public class BanHangDAO extends CoffeeDAO<BanHang, String>{
-    final String INSERT_SQL = "INSERT INTO BanHang (MaSP,TenBan,TenSP,Size,SoLuong,GhiChu) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE BanHang SET TenBan=?,TenSP=?,Size=?,SoLuong=?,GhiChu=? WHERE MaSP=?";
+    final String INSERT_SQL = "INSERT INTO BanHang (MaSP,TenBan,TenSP,Size,SoLuong,GhiChu,TongTien) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE BanHang SET TenBan=?,TenSP=?,Size=?,SoLuong=?,GhiChu=?, TongTien WHERE MaSP=?";
     final String DELETE_SQL = "DELETE FROM BanHang WHERE MaSP=?";
     final String SELECTALL_SQL = "SELECT * FROM BanHang";
     final String SELECTBYID_SQL = "SELECT * FROM BanHang WHERE MaSP=?";
     @Override
     public void insert(BanHang entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getMaSP(),entity.getTenBan(),entity.getTenSP(),entity.isSize(),entity.getSoLuong(),entity.getGhiChu());
+        JdbcHelper.update(INSERT_SQL, entity.getMaSP(),entity.getTenBan(),entity.getTenSP(),entity.isSize(),entity.getSoLuong(),entity.getGhiChu(),entity.getTongTien());
     }
 
     @Override
     public void update(BanHang entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getTenBan(),entity.getTenSP(),entity.isSize(),entity.getSoLuong(),entity.getGhiChu(),entity.getMaSP());    
+        JdbcHelper.update(UPDATE_SQL, entity.getTenBan(),entity.getTenSP(),entity.isSize(),entity.getSoLuong(),entity.getGhiChu(),entity.getTongTien(),entity.getMaSP());    
     }
 
     @Override
@@ -60,6 +60,7 @@ public class BanHangDAO extends CoffeeDAO<BanHang, String>{
                 entity.setSize(rs.getBoolean("Size"));
                 entity.setSoLuong(rs.getInt("SoLuong"));
                 entity.setGhiChu(rs.getString("GhiChu"));
+                entity.setTongTien(rs.getDouble("TongTien"));
                 list.add(entity);
             }
         } catch (Exception e) {
