@@ -108,7 +108,7 @@ public class Main extends javax.swing.JFrame {
         btnDelete1 = new com.k33ptoo.components.KButton();
         btnUpdate1 = new com.k33ptoo.components.KButton();
         kButton9 = new com.k33ptoo.components.KButton();
-        kButton10 = new com.k33ptoo.components.KButton();
+        btnHoaDon = new com.k33ptoo.components.KButton();
         jLabel44 = new javax.swing.JLabel();
         rdoSizeM = new javax.swing.JRadioButton();
         rdoSizeL = new javax.swing.JRadioButton();
@@ -650,7 +650,14 @@ public class Main extends javax.swing.JFrame {
 
         kButton9.setText("kButton1");
 
-        kButton10.setText("kButton1");
+        btnHoaDon.setText("Xuất HD");
+        btnHoaDon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnHoaDon.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDonActionPerformed(evt);
+            }
+        });
 
         jLabel44.setText("Size:");
 
@@ -714,7 +721,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(btnNew1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
-                                .addComponent(kButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(52, 52, 52)
                                 .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -755,7 +762,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnDelete1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2169,7 +2176,8 @@ public class Main extends javax.swing.JFrame {
     }
     
     private void btn_gioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gioiThieuActionPerformed
-        // TODO add your handling code here:
+        AboutFr a = new AboutFr();
+        a.setVisible(true);
     }//GEN-LAST:event_btn_gioiThieuActionPerformed
    
         
@@ -2372,6 +2380,10 @@ public class Main extends javax.swing.JFrame {
                 }
         }
     }//GEN-LAST:event_btnUpdate1ActionPerformed
+
+    private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
+        
+    }//GEN-LAST:event_btnHoaDonActionPerformed
 
     /* 
         ------------------------- Form Nhan Vien --------------------------------
@@ -2832,6 +2844,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnDelete;
     private com.k33ptoo.components.KButton btnDelete1;
+    private com.k33ptoo.components.KButton btnHoaDon;
     private com.k33ptoo.components.KButton btnInsert;
     private com.k33ptoo.components.KButton btnInsert1;
     private com.k33ptoo.components.KButton btnNew;
@@ -2924,7 +2937,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private com.k33ptoo.components.KButton kButton10;
     private com.k33ptoo.components.KButton kButton5;
     private com.k33ptoo.components.KButton kButton6;
     private com.k33ptoo.components.KButton kButton7;
