@@ -1015,16 +1015,25 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsert1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.k33ptoo.components.KButton" name="btnDelete1">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelete1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.k33ptoo.components.KButton" name="btnUpdate1">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdate1ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="com.k33ptoo.components.KButton" name="kButton9">
                           <Properties>

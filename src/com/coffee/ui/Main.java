@@ -614,10 +614,25 @@ public class Main extends javax.swing.JFrame {
         btnNew1.setText("Mới");
 
         btnInsert1.setText("Thêm");
+        btnInsert1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsert1ActionPerformed(evt);
+            }
+        });
 
         btnDelete1.setText("Xóa");
+        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelete1ActionPerformed(evt);
+            }
+        });
 
         btnUpdate1.setText("Sửa");
+        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdate1ActionPerformed(evt);
+            }
+        });
 
         kButton9.setText("kButton1");
 
@@ -2176,8 +2191,8 @@ public class Main extends javax.swing.JFrame {
             if(utilityHelper.checkName(txtTenSP)&&
                     utilityHelper.checkSo(txtGia)&&
                     utilityHelper.checkNullText(txtLoai)){
-                if(checkTrungMa(txtTenSP)){
-                    update();
+                if(checkTrungTenSP(txtTenSP)){
+                    updateSP();
                 }
             }
         }
@@ -2216,7 +2231,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSoDTActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
+        deleteNV();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -2228,7 +2243,7 @@ public class Main extends javax.swing.JFrame {
             if(utilityHelper.checkName(txtHoTen)&&
                     utilityHelper.checkSDT(txtSoDT)){
                 if(checkTrungMa(txtMaNV)){
-                    insert();
+                    insertNV();
                 }
             }
         }
@@ -2243,7 +2258,7 @@ public class Main extends javax.swing.JFrame {
             if(utilityHelper.checkName(txtHoTen)&&
                     utilityHelper.checkSDT(txtSoDT)){
                 if(checkTrungMa(txtMaNV)){
-                    update();
+                    updateNV();
                 }
             }
         } 
@@ -2252,7 +2267,7 @@ public class Main extends javax.swing.JFrame {
     private void tblNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMousePressed
         if(evt.getClickCount() == 2){
             this.row = tblNhanVien.getSelectedRow();
-            this.edit();
+            this.editNV();
         }
     }//GEN-LAST:event_tblNhanVienMousePressed
 
@@ -2275,21 +2290,28 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tblBangMousePressed
-
+    public boolean checkTrungTenSP(JTextField txt) {
+        txt.setBackground(white);
+        if (daoSP.selectById(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            return false;
+        }
+    }
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         if(utilityHelper.checkNullText(txtTenSP)&& utilityHelper.checkNullText(txtGia)&& utilityHelper.checkNullText(txtLoai)&& checkNullHinh()){
             if(utilityHelper.checkName(txtTenSP)&& utilityHelper.checkNullText(txtLoai)&& utilityHelper.checkSo(txtGia)){
-                if(checkTrungMa(txtTenSP)){
-                    insert();
+                if(checkTrungTenSP(txtTenSP)){
+                    insertSP();
                 }
             }
         }
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-
-        delete();
-        
+        this.deleteSP();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -2304,13 +2326,43 @@ public class Main extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_listTenSPMouseClicked
+    public boolean checkTrungMaSP(JTextField txt) {
+        txt.setBackground(white);
+        if (daobh.selectById(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            return false;
+        }
+    }
+    private void btnInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsert1ActionPerformed
+        if(utilityHelper.checkNullText(txtMaSP)){
+                if(checkTrungMaSP(txtMaSP)){
+                    insertBanHang();
+                }
+        }
+    }//GEN-LAST:event_btnInsert1ActionPerformed
+
+    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+        deleteBanHang();
+    }//GEN-LAST:event_btnDelete1ActionPerformed
+
+    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
+        if(utilityHelper.checkNullText(txtMaSP)){
+                if(checkTrungMaSP(txtMaSP)){
+                    updateBanHang();
+                }
+        }
+    }//GEN-LAST:event_btnUpdate1ActionPerformed
 
     /* 
         ------------------------- Form Nhan Vien --------------------------------
     */
     NhanVienDAO daoNV = new NhanVienDAO();
     int row = -1;
-    int index = 0; 
+    int index = 0;
+    
     void fillTableNV(){
         String keyword = txtTimKiem.getText();
         DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
@@ -2360,6 +2412,7 @@ public class Main extends javax.swing.JFrame {
         return nv;       
     }
     
+    
     public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
         if (daoNV.selectById(txt.getText()) == null) {
@@ -2383,13 +2436,13 @@ public class Main extends javax.swing.JFrame {
        this.row = -1;
     }
     
-    void edit(){
+    void editNV(){
         String manv = (String) tblNhanVien.getValueAt(this.row, 0);
         NhanVien nv = daoNV.selectById(manv);
         this.setForm(nv);
     }
     
-    void insert(){
+    void insertNV(){
             try {
                 NhanVien nv = getForm();
                 daoNV.insert(nv);
@@ -2401,7 +2454,7 @@ public class Main extends javax.swing.JFrame {
             } 
     }
     
-    void update(){
+    void updateNV(){
         NhanVien nv = getForm();
         try {
             daoNV.update(nv);
@@ -2412,7 +2465,7 @@ public class Main extends javax.swing.JFrame {
         }
     }
     
-    void delete(){
+    void deleteNV(){
         if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xóa nhân viên !");
         }
@@ -2610,7 +2663,7 @@ public class Main extends javax.swing.JFrame {
         try {
             List<SanPham> list = daoSP.selectAll();
             for(SanPham sp : list){
-                model.addElement(sp);
+                model.addElement(sp.getTenSP());
             }
             listTenSP.setModel(model);
         } catch (Exception e) {
@@ -2658,7 +2711,7 @@ public class Main extends javax.swing.JFrame {
         model.setTenBan(b.getTenBan());
         return model;
     }
-    void clear(){
+    void clearBanHang(){
         BanHang bh = new BanHang();
         setStatus(true);
     }
@@ -2686,6 +2739,42 @@ public class Main extends javax.swing.JFrame {
             cboTenBan.setModel(model);
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy cập dữ liệu");
+        }
+    }
+    void insertBanHang() {
+        try{
+            BanHang model = getModelBanHang();
+            daobh.insert(model);
+            this.loadTableBanHang();
+            this.clearBanHang();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+    
+    void updateBanHang() {
+        BanHang model = getModelBanHang();
+        try {
+            daobh.update(model);
+            this.loadTableBanHang();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+    
+    void deleteBanHang() {
+        if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
+            String masp = txtMaSP.getText();
+            try {
+                daoSP.delete(masp);
+                this.loadTableBanHang();
+                this.clearBanHang();
+                MsgBox.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
         }
     }
     /**
