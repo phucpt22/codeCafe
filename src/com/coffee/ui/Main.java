@@ -542,10 +542,12 @@ public class Main extends javax.swing.JFrame {
         pnl_tab2.setkEndColor(new java.awt.Color(241, 232, 212));
         pnl_tab2.setkStartColor(new java.awt.Color(238, 217, 176));
 
+        kGradientPanel2.setkEndColor(new java.awt.Color(153, 153, 255));
+        kGradientPanel2.setkStartColor(new java.awt.Color(255, 204, 255));
         kGradientPanel2.setPreferredSize(new java.awt.Dimension(1247, 840));
 
         listTenSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        listTenSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        listTenSP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         listTenSP.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -612,8 +614,14 @@ public class Main extends javax.swing.JFrame {
         lblThanhTien.setText("jLabel48");
 
         btnNew1.setText("Mới");
+        btnNew1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNew1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnNew1.setkHoverStartColor(new java.awt.Color(255, 0, 0));
 
         btnInsert1.setText("Thêm");
+        btnInsert1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnInsert1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnInsert1.setkHoverStartColor(new java.awt.Color(255, 51, 51));
         btnInsert1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsert1ActionPerformed(evt);
@@ -621,6 +629,9 @@ public class Main extends javax.swing.JFrame {
         });
 
         btnDelete1.setText("Xóa");
+        btnDelete1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnDelete1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnDelete1.setkHoverStartColor(new java.awt.Color(255, 0, 51));
         btnDelete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelete1ActionPerformed(evt);
@@ -628,6 +639,9 @@ public class Main extends javax.swing.JFrame {
         });
 
         btnUpdate1.setText("Sửa");
+        btnUpdate1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnUpdate1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnUpdate1.setkHoverStartColor(new java.awt.Color(255, 0, 0));
         btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdate1ActionPerformed(evt);
@@ -2205,6 +2219,9 @@ public class Main extends javax.swing.JFrame {
         NhanVien model = new NhanVien();
         model.setHoTen(Auth.user.getHoTen());
         lblHoTen.setText(String.valueOf(model.getHoTen()));
+        if(!Auth.isManager()){
+            tabs6.setVisible(false);
+        }
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
