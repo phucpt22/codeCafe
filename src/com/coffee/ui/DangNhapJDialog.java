@@ -134,6 +134,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtUser.setBackground(new java.awt.Color(233, 225, 193));
         txtUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtUser.setForeground(new java.awt.Color(128, 110, 80));
+        txtUser.setText("NV01");
         txtUser.setBorder(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -213,11 +214,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         txtPass.setBackground(new java.awt.Color(233, 225, 193));
         txtPass.setForeground(new java.awt.Color(128, 110, 80));
+        txtPass.setText("123");
         txtPass.setBorder(null);
 
         chkHideShowPass.setBackground(new java.awt.Color(233, 225, 193));
-        chkHideShowPass.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        chkHideShowPass.setForeground(new java.awt.Color(74, 62, 41));
+        chkHideShowPass.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         chkHideShowPass.setText("Hiện mật khẩu");
         chkHideShowPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +282,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkHideShowPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
