@@ -11,34 +11,35 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoaDonDAO extends CoffeeDAO<HoaDon, String>{
-    final String INSERT_SQL = "INSERT INTO HoaDon (MaHD,MaNV,TenBan,MaSP,TongTien,NgayTao,TenKH) VALUES (?,?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE HoaDon SET TenBan=?,MaSP=?,TongTien=?,NgayTao=?,TenKH=? WHERE MaHD=?";
+
+public class HoaDonDAO{
+    final String INSERT_SQL = "INSERT INTO HoaDon (TenKH,TongTien,MaNV,NgayTao) VALUES (?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE HoaDon SET TenKH=?,TongTien=?,MaNV=?,NgayTao=? WHERE MaHD=?";
     final String DELETE_SQL = "DELETE FROM HoaDon WHERE MaHD=?";
     final String SELECTALL_SQL = "SELECT * FROM HoaDon";
     final String SELECTBYID_SQL = "SELECT * FROM HoaDon WHERE MaHD=?";
-    @Override
+
     public void insert(HoaDon entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getMaHD(), entity.getMaNV(), entity.getTenBan(), entity.getMaSP(), entity.getNgayTao(), entity.getTenKH(), entity.getTongTien());
+        JdbcHelper.update(INSERT_SQL, entity.getTenKH(),entity.getTongTien(),entity.getMaNV(),entity.getNgayTao());
     }
 
-    @Override
+
     public void update(HoaDon entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getMaNV(), entity.getTenBan(), entity.getMaSP(), entity.getNgayTao(), entity.getTenKH(), entity.getTongTien(), entity.getMaHD());    
+        JdbcHelper.update(UPDATE_SQL, entity.getTenKH(),entity.getTongTien(),entity.getMaNV(),entity.getNgayTao(),entity.getMaHD());    
     }
 
-    @Override
+
     public void delete(String id) {
         JdbcHelper.update(DELETE_SQL,id);
     }
 
-    @Override
+
     public List<HoaDon> selectAll() {
         return selectBySql(SELECTALL_SQL);
     }
 
-    @Override
-    public HoaDon selectById(String id) {
+
+    public HoaDon selectById(Integer id) {
         List<HoaDon> list = this.selectBySql(SELECTBYID_SQL, id);
         if(list.isEmpty()){
             return null;
@@ -46,25 +47,27 @@ public class HoaDonDAO extends CoffeeDAO<HoaDon, String>{
         return list.get(0);
     }
 
-    @Override
+
     public List<HoaDon> selectBySql(String sql, Object... args) {
         List<HoaDon> list = new ArrayList<>();
         try {
             ResultSet rs = JdbcHelper.query(sql, args);
             while(rs.next()){
                 HoaDon entity = new HoaDon();
-                entity.setMaHD(rs.getString("MaHD"));
-                entity.setMaNV(rs.getString("MaNV"));
-                entity.setTenBan(rs.getString("TenBan"));
-                entity.setMaSP(rs.getString("MaSP"));
-                entity.setNgayTao(rs.getDate("NgayTao"));
+                entity.setMaHD(rs.getInt("MaHD"));
                 entity.setTenKH(rs.getString("TenKH"));
                 entity.setTongTien(rs.getDouble("TongTien"));
+                entity.setMaNV(rs.getString("MaNV"));
+                entity.setNgayTao(rs.getDate("NgayTao"));
                 list.add(entity);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return list;
+    }
+    public List<HoaDon> selectTen() {
+        String SELECTTenSP_SQL = "Select TenSP from HoaDon";
+        return selectBySql(SELECTTenSP_SQL);
     }
 }
