@@ -5,24 +5,28 @@
  */
 package com.coffee.entity;
 
+/**
+ *
+ * @author Admin
+ */
 public class ChiTietHoaDon {
     int MaHD;
     String TenSP;
     String TenBan;
     double Gia;
-    boolean size;
+    boolean Size;
     int SoLuong;
     double TongTien;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int MaHD, String TenSP, String TenBan, double Gia, boolean size, int SoLuong, double TongTien) {
+    public ChiTietHoaDon(int MaHD, String TenSP, String TenBan, double Gia, boolean Size, int SoLuong, double TongTien) {
         this.MaHD = MaHD;
         this.TenSP = TenSP;
         this.TenBan = TenBan;
         this.Gia = Gia;
-        this.size = size;
+        this.Size = Size;
         this.SoLuong = SoLuong;
         this.TongTien = TongTien;
     }
@@ -60,11 +64,11 @@ public class ChiTietHoaDon {
     }
 
     public boolean isSize() {
-        return size;
+        return Size;
     }
 
-    public void setSize(boolean size) {
-        this.size = size;
+    public void setSize(boolean Size) {
+        this.Size = Size;
     }
 
     public int getSoLuong() {
@@ -82,5 +86,4 @@ public class ChiTietHoaDon {
     public void setTongTien(double TongTien) {
         this.TongTien = TongTien;
     }
-    
 }

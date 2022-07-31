@@ -12,19 +12,15 @@ public class SanPham {
     String TenSP;
     String LoaiSP;
     double Gia;
-    Date NgayKM;
-    Date NgayHetKM;
     String Hinh;
 
     public SanPham() {
     }
 
-    public SanPham(String TenSP, String LoaiSP, double Gia, Date NgayKM, Date NgayHetKM, String Hinh) {
+    public SanPham(String TenSP, String LoaiSP, double Gia, String Hinh) {
         this.TenSP = TenSP;
         this.LoaiSP = LoaiSP;
         this.Gia = Gia;
-        this.NgayKM = NgayKM;
-        this.NgayHetKM = NgayHetKM;
         this.Hinh = Hinh;
     }
 
@@ -50,22 +46,6 @@ public class SanPham {
 
     public void setGia(double Gia) {
         this.Gia = Gia;
-    }
-
-    public Date getNgayKM() {
-        return NgayKM;
-    }
-
-    public void setNgayKM(Date NgayKM) {
-        this.NgayKM = NgayKM;
-    }
-
-    public Date getNgayHetKM() {
-        return NgayHetKM;
-    }
-
-    public void setNgayHetKM(Date NgayHetKM) {
-        this.NgayHetKM = NgayHetKM;
     }
 
     public String getHinh() {

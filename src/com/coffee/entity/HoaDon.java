@@ -5,61 +5,43 @@
  */
 package com.coffee.entity;
 
+
+import com.coffee.utils.XDate;
 import java.util.Date;
 
-
 public class HoaDon {
-    String MaHD;
-    String MaNV;
-    String TenBan;
-    String MaSP;
-    double TongTien;
-    Date NgayTao;
+    
+    int MaHD;
     String TenKH;
+    double TongTien;
+    String MaNV;
+    Date NgayTao = XDate.now();
 
     public HoaDon() {
     }
 
-    public HoaDon(String MaHD, String MaNV, String TenBan, String MaSP, double TongTien, Date NgayTao, String TenKH) {
+    public HoaDon(int MaHD, String TenKH, double TongTien, String MaNV) {
         this.MaHD = MaHD;
-        this.MaNV = MaNV;
-        this.TenBan = TenBan;
-        this.MaSP = MaSP;
-        this.TongTien = TongTien;
-        this.NgayTao = NgayTao;
         this.TenKH = TenKH;
+        this.TongTien = TongTien;
+        this.MaNV = MaNV;
     }
 
-    public String getMaHD() {
+    public int getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(String MaHD) {
+    public void setMaHD(int MaHD) {
         this.MaHD = MaHD;
     }
 
-    public String getMaNV() {
-        return MaNV;
+    
+    public String getTenKH() {
+        return TenKH;
     }
 
-    public void setMaNV(String MaNV) {
-        this.MaNV = MaNV;
-    }
-
-    public String getTenBan() {
-        return TenBan;
-    }
-
-    public void setTenBan(String TenBan) {
-        this.TenBan = TenBan;
-    }
-
-    public String getMaSP() {
-        return MaSP;
-    }
-
-    public void setMaSP(String MaSP) {
-        this.MaSP = MaSP;
+    public void setTenKH(String TenKH) {
+        this.TenKH = TenKH;
     }
 
     public double getTongTien() {
@@ -70,6 +52,14 @@ public class HoaDon {
         this.TongTien = TongTien;
     }
 
+    public String getMaNV() {
+        return MaNV;
+    }
+
+    public void setMaNV(String MaNV) {
+        this.MaNV = MaNV;
+    }
+
     public Date getNgayTao() {
         return NgayTao;
     }
@@ -77,13 +67,4 @@ public class HoaDon {
     public void setNgayTao(Date NgayTao) {
         this.NgayTao = NgayTao;
     }
-
-    public String getTenKH() {
-        return TenKH;
-    }
-
-    public void setTenKH(String TenKH) {
-        this.TenKH = TenKH;
-    }
-    
 }
