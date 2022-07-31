@@ -5,51 +5,37 @@
  */
 package com.coffee.entity;
 
-
-import com.coffee.utils.XDate;
 import java.util.Date;
 
+
 public class HoaDon {
-    int MaHD;
-    String TenKH;
-    double TongTien;
+    String MaHD;
     String MaNV;
-    Date NgayTao = XDate.now();
-    Date GioDat = XDate.now();;
+    String TenBan;
+    String MaSP;
+    double TongTien;
+    Date NgayTao;
+    String TenKH;
 
     public HoaDon() {
     }
 
-    public HoaDon(int MaHD, String TenKH, double TongTien, String MaNV) {
+    public HoaDon(String MaHD, String MaNV, String TenBan, String MaSP, double TongTien, Date NgayTao, String TenKH) {
         this.MaHD = MaHD;
-        this.TenKH = TenKH;
-        this.TongTien = TongTien;
         this.MaNV = MaNV;
+        this.TenBan = TenBan;
+        this.MaSP = MaSP;
+        this.TongTien = TongTien;
+        this.NgayTao = NgayTao;
+        this.TenKH = TenKH;
     }
 
-    public int getMaHD() {
+    public String getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(int MaHD) {
+    public void setMaHD(String MaHD) {
         this.MaHD = MaHD;
-    }
-
-    
-    public String getTenKH() {
-        return TenKH;
-    }
-
-    public void setTenKH(String TenKH) {
-        this.TenKH = TenKH;
-    }
-
-    public double getTongTien() {
-        return TongTien;
-    }
-
-    public void setTongTien(double TongTien) {
-        this.TongTien = TongTien;
     }
 
     public String getMaNV() {
@@ -60,6 +46,30 @@ public class HoaDon {
         this.MaNV = MaNV;
     }
 
+    public String getTenBan() {
+        return TenBan;
+    }
+
+    public void setTenBan(String TenBan) {
+        this.TenBan = TenBan;
+    }
+
+    public String getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
+    }
+
+    public double getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(double TongTien) {
+        this.TongTien = TongTien;
+    }
+
     public Date getNgayTao() {
         return NgayTao;
     }
@@ -68,12 +78,12 @@ public class HoaDon {
         this.NgayTao = NgayTao;
     }
 
-    public Date getGioDat() {
-        return GioDat;
+    public String getTenKH() {
+        return TenKH;
     }
 
-    public void setGioDat(Date GioDat) {
-        this.GioDat = GioDat;
+    public void setTenKH(String TenKH) {
+        this.TenKH = TenKH;
     }
-
+    
 }
