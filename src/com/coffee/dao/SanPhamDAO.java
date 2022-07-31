@@ -13,19 +13,19 @@ import java.util.List;
 
 
 public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
-    final String INSERT_SQL = "INSERT INTO SanPham (TenSP, LoaiSP, Gia, NgayKM, NgayHetKM, Hinh) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE SanPham SET LoaiSP=?, Gia=?, NgayKM=?, NgayHetKM=?, Hinh=? WHERE TenSP=?";
+    final String INSERT_SQL = "INSERT INTO SanPham (TenSP, LoaiSP, Gia, Hinh) VALUES (?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE SanPham SET LoaiSP=?, Gia=?, Hinh=? WHERE TenSP=?";
     final String DELETE_SQL = "DELETE FROM SanPham WHERE TenSP=?";
     final String SELECTALL_SQL = "SELECT * FROM SanPham";
     final String SELECTBYID_SQL = "SELECT * FROM SanPham WHERE TenSP=?";
     @Override
     public void insert(SanPham entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getTenSP(),entity.getLoaiSP(),entity.getGia(),entity.getNgayKM(),entity.getNgayHetKM(),entity.getHinh());
+        JdbcHelper.update(INSERT_SQL, entity.getTenSP(),entity.getLoaiSP(),entity.getGia(),entity.getHinh());
     }
 
     @Override
     public void update(SanPham entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getLoaiSP(),entity.getGia(),entity.getNgayKM(),entity.getNgayHetKM(),entity.getHinh(), entity.getTenSP());    
+        JdbcHelper.update(UPDATE_SQL, entity.getLoaiSP(),entity.getGia(),entity.getHinh(), entity.getTenSP());    
     }
 
     @Override
@@ -60,8 +60,6 @@ public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
                 entity.setTenSP(rs.getString("TenSP"));
                 entity.setLoaiSP(rs.getString("LoaiSP"));
                 entity.setGia(rs.getDouble("Gia"));
-                entity.setNgayKM(rs.getDate("NgayKM"));
-                entity.setNgayHetKM(rs.getDate("NgayHetKM"));
                 entity.setHinh(rs.getString("Hinh"));
                 list.add(entity);
             }
