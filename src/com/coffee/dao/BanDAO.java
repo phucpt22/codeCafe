@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class BanDAO extends CoffeeDAO<Ban, String>{
-    final String INSERT_SQL = "INSERT INTO Ban (TenBan,GhiChu) VALUES (?,?,?,?,?,?)";
+    final String INSERT_SQL = "INSERT INTO Ban (TenBan,GhiChu) VALUES (?,?)";
     final String UPDATE_SQL = "UPDATE Ban SET GhiChu=? WHERE TenBan=?";
     final String DELETE_SQL = "DELETE FROM Ban WHERE TenBan=?";
     final String SELECTALL_SQL = "SELECT * FROM Ban";
