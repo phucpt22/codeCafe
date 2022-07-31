@@ -23,7 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import com.coffee.utils.utilityHelper;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
+import java.awt.Component;
+import java.awt.Container;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -98,7 +101,7 @@ public class Main extends javax.swing.JFrame {
         rdoSizeM = new javax.swing.JRadioButton();
         rdoSizeL = new javax.swing.JRadioButton();
         jLabel48 = new javax.swing.JLabel();
-        lblTenSP1 = new javax.swing.JLabel();
+        lblGia = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         txtNgayTao = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
@@ -650,8 +653,8 @@ public class Main extends javax.swing.JFrame {
         jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel48.setText("Giá:");
 
-        lblTenSP1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        lblTenSP1.setText("....");
+        lblGia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lblGia.setText("....");
 
         jLabel49.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel49.setText("Ngày Tạo:");
@@ -719,7 +722,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTenSP)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                .addComponent(lblTenSP1)
+                                .addComponent(lblGia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel41)
@@ -761,7 +764,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel42)
                     .addComponent(cboTenBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48)
-                    .addComponent(lblTenSP1)
+                    .addComponent(lblGia)
                     .addComponent(spinerSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,9 +779,8 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(rdoSizeL)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel51)
-                        .addComponent(txtGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel52)
                         .addComponent(lblTongTien)))
@@ -809,6 +811,14 @@ public class Main extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(0, 0, 0));
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtTienNhan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTienNhan.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtTienNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTienNhanActionPerformed(evt);
+            }
+        });
+
         jLabel53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel53.setText("Tiền Nhận:");
 
@@ -831,6 +841,8 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 30));
 
+        txtTienThua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTienThua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTienThua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTienThuaActionPerformed(evt);
@@ -859,6 +871,8 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 260, -1));
 
+        txtGiamGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGiamGia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtGiamGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGiamGiaActionPerformed(evt);
@@ -887,6 +901,8 @@ public class Main extends javax.swing.JFrame {
 
         jPanel16.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 260, -1));
 
+        txtThanhTien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtThanhTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtThanhTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtThanhTienActionPerformed(evt);
@@ -1163,6 +1179,7 @@ public class Main extends javax.swing.JFrame {
         jPanel7.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 260, 250));
 
         txtMayTinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMayTinh.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtMayTinh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel7.add(txtMayTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 260, 50));
 
@@ -2571,12 +2588,21 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tabs5MouseClicked
 
     private void tabs6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabs6MouseClicked
-        pnl_tab6.setVisible(true);
-        pnl_tab1.setVisible(false);
-        pnl_tab2.setVisible(false);
-        pnl_tab3.setVisible(false);
-        pnl_tab4.setVisible(false);
-        pnl_tab5.setVisible(false);
+        if(!Auth.isManager()){
+            List<Component> comps = getAllComponents(tabs6);
+            for (Component comp : comps) {
+                comp.setEnabled(false);
+            }
+        }
+        else{
+            pnl_tab6.setVisible(true);
+            pnl_tab1.setVisible(false);
+            pnl_tab2.setVisible(false);
+            pnl_tab3.setVisible(false);
+            pnl_tab4.setVisible(false);
+            pnl_tab5.setVisible(false);
+        }
+        
 
         tabs6.setBackground(new Color(139,118,87));
         tabs1.setBackground(new Color(112,92,65));
@@ -2585,6 +2611,18 @@ public class Main extends javax.swing.JFrame {
         tabs4.setBackground(new Color(112,92,65));
         tabs5.setBackground(new Color(112,92,65));
     }//GEN-LAST:event_tabs6MouseClicked
+    
+    public List<Component> getAllComponents(final Container c) {
+        Component[] comps = c.getComponents();
+        List<Component> compList = new ArrayList<Component>();
+        for (Component comp : comps) {
+            compList.add(comp);
+            if (comp instanceof Container) {
+                compList.addAll(getAllComponents((Container) comp));
+            }
+        }
+        return compList;
+    }
     
     void ketThuc(){
         if(MsgBox.confirm(this, "Bạn muốn kết thúc làm việc ?")){
@@ -2612,8 +2650,6 @@ public class Main extends javax.swing.JFrame {
             this.dispose();
             new Main().setVisible(true);
         }
-        
-        new DangNhapJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btn_dangXuatActionPerformed
 
     private void btn_huongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huongDanActionPerformed
@@ -2649,11 +2685,9 @@ public class Main extends javax.swing.JFrame {
         NhanVien model = new NhanVien();
         model.setHoTen(Auth.user.getHoTen());
         lblHoTen.setText(String.valueOf(model.getHoTen()));
-//        if(!Auth.isManager()){
-//            tabs6.setEnabled(false);
-//        }
-        
+       
     }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         hienthiten();
         this.loadSP();
@@ -2786,10 +2820,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGioDatActionPerformed
 
     private void listTenSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseClicked
-        if(evt.getClickCount()==1){
+        if (evt.getClickCount() == 1) {
             int index = listTenSP.getSelectedIndex();
-            //lblTenSP.setText(daobh.get(index).selectTen());
-
+            List<SanPham> list = daoSP.selectAll();
+            lblTenSP.setText(list.get(index).getTenSP());
+            lblGia.setText(String.valueOf(list.get(index).getGia() + " VND"));
         }
     }//GEN-LAST:event_listTenSPMouseClicked
 
@@ -2820,6 +2855,10 @@ public class Main extends javax.swing.JFrame {
     private void btn_AddHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddHDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_AddHDActionPerformed
+
+    private void txtTienNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienNhanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTienNhanActionPerformed
     public boolean checkTrungMaSP(JTextField txt) {
         txt.setBackground(white);
         if (daobh.selectById(txt.getText()) == null) {
@@ -3420,10 +3459,10 @@ public class Main extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel kGradientPanel11;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private com.k33ptoo.components.KGradientPanel kGradientPanel9;
+    private javax.swing.JLabel lblGia;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblHoTen;
     private javax.swing.JLabel lblTenSP;
-    private javax.swing.JLabel lblTenSP1;
     private javax.swing.JLabel lblTongTien;
     private javax.swing.JList<String> listTenSP;
     private javax.swing.JPanel pnl_bg;
