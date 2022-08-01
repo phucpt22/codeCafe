@@ -10,6 +10,9 @@ import com.coffee.entity.NhanVien;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
 import com.coffee.utils.XImage;
+import com.coffee.utils.utilityHelper;
+import static java.awt.Color.pink;
+import static java.awt.Color.white;
 
 /**
  *
@@ -36,24 +39,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String manv = txtUser.getText();
         String matkhau = new String(txtPass.getPassword());
         NhanVien nhanVien = dao.selectById(manv);
-        if(!nhanVien.getMaNV().equals(manv)){
-            MsgBox.alert(this, "Sai tên đăng nhập!");
-        }else if(nhanVien == null){
-            MsgBox.alert(this, "Sai tên đăng nhập!");    
-        }else if(manv.equals("")){
-            MsgBox.alert(this, "Thiếu tên đăng nhập!");    
-        }else if(matkhau.equals("")){
-            MsgBox.alert(this, "Thiếu mật khẩu!");    
-        }else if(matkhau.equals("") && manv.equals("")){
-            MsgBox.alert(this, "Thiếu mã nhân viên và mật khẩu!");    
-        }else{
-            if(!nhanVien.getMatKhau().equals(matkhau)){
-                MsgBox.alert(this, "Sai mật khẩu");
-            }else{
-                Auth.user = nhanVien;
-                this.dispose();
-            }
-        }
+        Auth.user = nhanVien;
+        this.dispose();
     }
     void ketThuc(){
         if(MsgBox.confirm(this, "Bạn muốn kết thúc ứng dụng?")){
@@ -86,6 +73,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         chkHideShowPass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -129,17 +117,19 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(128, 110, 80));
-        jLabel2.setText("Mã nhân viên:");
+        jLabel2.setText("Tài Khoản: ");
+        jLabel2.setToolTipText("Tài Khoản");
 
         txtUser.setBackground(new java.awt.Color(233, 225, 193));
         txtUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtUser.setForeground(new java.awt.Color(128, 110, 80));
         txtUser.setText("NV01");
+        txtUser.setToolTipText("Tài Khoản");
         txtUser.setBorder(null);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(128, 110, 80));
-        jLabel3.setText("Mật khẩu:");
+        jLabel3.setText("Mật Khẩu:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(128, 110, 80));
@@ -215,10 +205,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtPass.setBackground(new java.awt.Color(233, 225, 193));
         txtPass.setForeground(new java.awt.Color(128, 110, 80));
         txtPass.setText("123");
+        txtPass.setToolTipText("Mật khẩu");
         txtPass.setBorder(null);
 
         chkHideShowPass.setBackground(new java.awt.Color(233, 225, 193));
-        chkHideShowPass.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        chkHideShowPass.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        chkHideShowPass.setForeground(new java.awt.Color(69, 57, 36));
         chkHideShowPass.setText("Hiện mật khẩu");
         chkHideShowPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +244,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(20, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +274,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chkHideShowPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -306,7 +298,27 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        dangNhap();
+        String manv = txtUser.getText();
+        String matkhau = new String(txtPass.getPassword());
+        NhanVien nhanVien = dao.selectById(manv);
+        txtUser.setBackground(white);
+        txtPass.setBackground(white);
+        if(utilityHelper.checkNullText(txtUser) && 
+                utilityHelper.checkNullPass(txtPass)){
+            if(nhanVien == null){
+                MsgBox.alert(this, "Tài khoản không tồn tại !");
+                txtUser.requestFocus();
+                txtUser.setBackground(pink);
+            }
+            else if(!matkhau.equals(nhanVien.getMatKhau())){
+                MsgBox.alert(this, "Mật khẩu không đúng !");
+                txtPass.requestFocus();
+                txtPass.setBackground(pink);
+            }
+            else{
+               dangNhap(); 
+            }
+        }  
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed

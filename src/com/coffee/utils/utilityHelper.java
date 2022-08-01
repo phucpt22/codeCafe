@@ -56,7 +56,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải có 1-15 kí tự\nchữ hoa, thường không dấu hoặc số.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải có 1-15 kí tự\nchữ hoa, thường không dấu hoặc số.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -73,7 +74,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải có đúng 7 kí tự\nchữ thường, chữ hoa hoặc số");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải có đúng 7 kí tự\nchữ thường, chữ hoa hoặc số");
+            txt.requestFocus();
             return false;
         }
     }
@@ -90,7 +92,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải có đúng 5 kí tự\nchữ thường, chữ hoa hoặc số");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải có đúng 5 kí tự\nchữ thường, chữ hoa hoặc số");
+            txt.requestFocus();
             return false;
         }
     }
@@ -102,7 +105,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải có từ 3-16 kí tự.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải có từ 3-16 kí tự.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -147,7 +151,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " không đúng định dạng dd/MM/yyyy");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không đúng định dạng dd/MM/yyyy");
+            txt.requestFocus();
             return false;
         }
     }
@@ -162,7 +167,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là tên tiếng việt hoặc không đấu\ntừ 3-25 kí tự");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là tên tiếng việt hoặc không đấu &\ntừ 3-25 kí tự");
+            txt.requestFocus();
             return false;
         }
     }
@@ -177,7 +183,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải từ 3-50 kí tự.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải từ 3-50 kí tự.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -192,7 +199,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải từ 3-255 kí tự.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải từ 3-255 kí tự.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -207,7 +215,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải gồm 10 số\nđúng các đầu số của nhà mạng.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải gồm 10 số &\nđúng các đầu số của nhà mạng.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -220,7 +229,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " không đúng định dạng");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không đúng định dạng");
+            txt.requestFocus();
             return false;
         }
     }
@@ -234,12 +244,14 @@ public class utilityHelper {
                 return true;
             } else {
                 txt.setBackground(pink);
-                MsgBox.alert(txt.getRootPane(), txt.getName() + " phải lớn hơn bằng 0.");
+                MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải lớn hơn bằng 0.");
+                txt.requestFocus();
                 return false;
             }
         } catch (NumberFormatException e) {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là số nguyên.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là số nguyên.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -253,12 +265,14 @@ public class utilityHelper {
                 return true;
             } else {
                 txt.setBackground(pink);
-                MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là lớn hơn bằng 0.");
+                MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là lớn hơn bằng 0.");
+                txt.requestFocus();
                 return false;
             }
         } catch (NumberFormatException e) {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là số thực.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là số thực.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -271,12 +285,14 @@ public class utilityHelper {
                 return true;
             } else {
                 txt.setBackground(pink);
-                MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là trong khoảng 0-10 hoặc chưa nhập (-1).");
+                MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là trong khoảng 0-10 hoặc chưa nhập (-1).");
+                txt.requestFocus();
                 return false;
             }
         } catch (NumberFormatException e) {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getName() + " phải là số thực.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải là số thực.");
+            txt.requestFocus();
             return false;
         }
     }
@@ -287,7 +303,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            txt.requestFocus();
             return false;
         }
     }
@@ -298,7 +315,8 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            txt.requestFocus();
             return false;
         }
     }
@@ -309,8 +327,10 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), "Không được để trống " + txt.getName());
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            txt.requestFocus();
             return false;
         }
     }
+    
 }
