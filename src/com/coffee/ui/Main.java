@@ -35,6 +35,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -87,8 +89,6 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnl_tab = new com.k33ptoo.components.KGradientPanel();
         pnl_tab1 = new com.k33ptoo.components.KGradientPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         pnl_tab2 = new com.k33ptoo.components.KGradientPanel();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -544,18 +544,6 @@ public class Main extends javax.swing.JFrame {
         pnl_tab1.setkEndColor(new java.awt.Color(241, 232, 212));
         pnl_tab1.setkStartColor(new java.awt.Color(238, 217, 176));
 
-        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Living-Wall-in-Coffee-Shop.png"))); // NOI18N
-        jLabel16.setOpaque(true);
-
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/cafe_gif2.gif"))); // NOI18N
-        jLabel17.setOpaque(true);
-
         jLabel28.setFont(new java.awt.Font("Edwardian Script ITC", 0, 120)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(95, 58, 30));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -567,27 +555,16 @@ public class Main extends javax.swing.JFrame {
         pnl_tab1Layout.setHorizontalGroup(
             pnl_tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_tab1Layout.createSequentialGroup()
-                .addGroup(pnl_tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_tab1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_tab1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(195, 195, 195)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
         pnl_tab1Layout.setVerticalGroup(
             pnl_tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_tab1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(pnl_tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addContainerGap(667, Short.MAX_VALUE))
         );
 
         pnl_tab.add(pnl_tab1);
@@ -662,7 +639,7 @@ public class Main extends javax.swing.JFrame {
         jLabel45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel45.setText("Số lượng:");
 
-        spinerSoLuong.setModel(new javax.swing.SpinnerNumberModel());
+        spinerSoLuong.setModel(new javax.swing.SpinnerNumberModel(1, 1, 20, 1));
         spinerSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinerSoLuongStateChanged(evt);
@@ -718,7 +695,7 @@ public class Main extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
@@ -726,7 +703,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboTenBan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(cboTenBan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(spinerSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel49)
@@ -734,8 +714,8 @@ public class Main extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTongTien)
-                            .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(145, 145, 145)
+                            .addComponent(txtNgayTao))))
+                .addGap(63, 63, 63)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -756,13 +736,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(txtNguoiLap, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(rdoSizeM)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rdoSizeL))
-                    .addComponent(spinerSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
+                .addComponent(rdoSizeM)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rdoSizeL)
+                .addGap(91, 91, 91))
             .addComponent(jScrollPane5)
         );
         jPanel8Layout.setVerticalGroup(
@@ -2635,6 +2612,8 @@ public class Main extends javax.swing.JFrame {
         this.fillTableLuongSanPhamBan();
         this.fillTableDoanhThu();
         this.loadTableChiTietHoaDon();
+        this.clearCTHoaDon();
+        this.clearHoaDon();
        
         
           
@@ -2959,7 +2938,7 @@ public class Main extends javax.swing.JFrame {
             int index = listTenSP.getSelectedIndex();
             List<SanPham> list = daoSP.selectAll();
             lblTenSP.setText(list.get(index).getTenSP());
-            lblGia.setText(String.valueOf(list.get(index).getGia() + " VND"));
+            lblGia.setText(String.valueOf(list.get(index).getGia()));
         }
     }//GEN-LAST:event_listTenSPMouseClicked
 
@@ -2996,7 +2975,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTienNhanActionPerformed
 
     private void spinerSoLuongStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinerSoLuongStateChanged
-        
+        SpinnerModel model = new SpinnerNumberModel();
+        spinerSoLuong.setModel(model);
+
+        int n = Integer.parseInt(spinerSoLuong.getValue().toString());
+        double a =Double.valueOf(lblGia.getText());
+        lblTongTien.setText(String.valueOf(a*n));
+//        String a,b;
+//        a = lblGia.getText();
+//        b = spinerSoLuong.getValue().toString();
+//        double c = (Double) a * b;
+//        lblTongTien.setText(Double.valueOf(a*b));
     }//GEN-LAST:event_spinerSoLuongStateChanged
 //    public boolean checkTrungMaSP(JTextField txt) {
 //        txt.setBackground(white);
@@ -3360,7 +3349,12 @@ public class Main extends javax.swing.JFrame {
         return model;
     }
     void clearHoaDon(){
-        HoaDon bh = new HoaDon();
+        HoaDon hd = new HoaDon();
+        hd.setMaNV(Auth.user.getMaNV());
+        hd.setNgayTao(XDate.now());
+        hd.setTongTien(0);
+        hd.setTenKH("");
+        setModelHoaDon(hd);
         setStatusHoaDon(true);
     }
     void fillComboBoxBan(){
@@ -3471,7 +3465,13 @@ public class Main extends javax.swing.JFrame {
         return model;
     }
     void clearCTHoaDon(){
-        ChiTietHoaDon bh = new ChiTietHoaDon();
+        txtNgayTao.setBackground(white);
+
+        ChiTietHoaDon ct = new ChiTietHoaDon();
+
+        ct.setSize(rdoSizeM.isSelected());
+        ct.setSoLuong(1);
+        this.setModelCTHoaDon(ct);
         setStatusCTHoaDon(true);
     }
     //-----------------------------------------form thóng kê---------------------------------------
@@ -3578,8 +3578,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
