@@ -29,7 +29,7 @@ public class HoaDonDAO{
     }
 
 
-    public void delete(String id) {
+    public void delete(Integer id) {
         JdbcHelper.update(DELETE_SQL,id);
     }
 
