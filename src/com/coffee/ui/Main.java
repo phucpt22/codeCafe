@@ -663,6 +663,11 @@ public class Main extends javax.swing.JFrame {
         jLabel45.setText("Số lượng:");
 
         spinerSoLuong.setModel(new javax.swing.SpinnerNumberModel());
+        spinerSoLuong.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spinerSoLuongStateChanged(evt);
+            }
+        });
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel41.setText("Size:");
@@ -2989,6 +2994,10 @@ public class Main extends javax.swing.JFrame {
     private void txtTienNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienNhanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTienNhanActionPerformed
+
+    private void spinerSoLuongStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinerSoLuongStateChanged
+        
+    }//GEN-LAST:event_spinerSoLuongStateChanged
 //    public boolean checkTrungMaSP(JTextField txt) {
 //        txt.setBackground(white);
 //        if (daobh.selectById(txt.getText()) == null) {
@@ -3326,7 +3335,7 @@ public class Main extends javax.swing.JFrame {
     }
     void editHoaDon() {
         try {
-            Integer masp = (Integer) tblBang.getValueAt(this.index, 0);
+            Integer masp = (Integer) tblBangDonHang.getValueAt(this.index, 0);
             HoaDon model = daobh.selectById(masp);
             if (model != null) {
                 this.setModelHoaDon(model);
@@ -3341,11 +3350,6 @@ public class Main extends javax.swing.JFrame {
         lblTongTien.setText(String.valueOf(hd.getTongTien()));
         txtNguoiLap.setText(hd.getMaNV());
         txtNgayTao.setText(XDate.toString(hd.getNgayTao(),"dd/MM/yyyy, HH:mm:ss"));
-//        rdoSizeL.setSelected(model.isSize());
-//        rdoSizeM.setSelected(!model.isSize());
-//        cboTenBan.setToolTipText(String.valueOf(model.getMaSP()));    
-//        cboTenBan.getModel().setSelectedItem(daoB.selectById(model.getTenBan())); 
-//        spinerSoLuong.setValue(model.getSoLuong());
     }
     HoaDon getModelHoaDon() {
         HoaDon model = new HoaDon();
@@ -3353,17 +3357,14 @@ public class Main extends javax.swing.JFrame {
         model.setTongTien(Double.valueOf(lblTongTien.getText()));
         model.setMaNV(Auth.user.getMaNV());
         model.setNgayTao(XDate.toDate(txtNgayTao.getText(),"dd/MM/yyyy, HH:mm:ss"));
-//        Ban b = (Ban) cboTenBan.getSelectedItem();
-//        model.setTenBan(b.getTenBan());
         return model;
     }
     void clearHoaDon(){
         HoaDon bh = new HoaDon();
-        setStatus(true);
+        setStatusHoaDon(true);
     }
     void fillComboBoxBan(){
         DefaultComboBoxModel model = new DefaultComboBoxModel<>();
-        //model.removeAllElements();
         try {
             List<Ban> list = daoB.selectAll();
             for(Ban b : list){
@@ -3399,9 +3400,9 @@ public class Main extends javax.swing.JFrame {
     
     void deleteHoaDon() {
         if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
-            String masp = txtTenKH.getText();
+            Integer masp = Integer.valueOf(cboTenBan.getToolTipText());
             try {
-                daoSP.delete(masp);
+                daobh.delete(masp);
                 this.loadTableHoaDon();
                 this.clearHoaDon();
                 MsgBox.alert(this, "Xóa thành công!");
@@ -3427,7 +3428,52 @@ public class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+    void setStatusCTHoaDon(boolean insertable) {
+        btnInsert.setEnabled(insertable);
+        btnUpdate.setEnabled(!insertable);
+        btnDelete.setEnabled(!insertable);
+        boolean first = this.index > 0;
+        boolean last = this.index < tblBangChiTietHD.getRowCount() - 1;
+
+    }
+    void editCTHoaDon() {
+        try {
+            Integer masp = (Integer) tblBangChiTietHD.getValueAt(this.index, 0);
+            ChiTietHoaDon model = daocthd.selectById(masp);
+            if (model != null) {
+                this.setModelCTHoaDon(model);
+                this.setStatusCTHoaDon(false);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    void setModelCTHoaDon(ChiTietHoaDon model) {
+        lblTenSP.setText(model.getTenSP());
+        rdoSizeL.setSelected(model.isSize());
+        rdoSizeM.setSelected(!model.isSize());
+        cboTenBan.setToolTipText(String.valueOf(model.getMaHD()));    
+        cboTenBan.getModel().setSelectedItem(daoB.selectById(model.getTenBan())); 
+        spinerSoLuong.setValue(model.getSoLuong());
+        lblTongTien.setText(String.valueOf(model.getTongTien()));
+        //còn tổng tiền éo biết lấy sao
+    }
+    ChiTietHoaDon getModelCTHoaDon() {
+        ChiTietHoaDon model = new ChiTietHoaDon();
+        Ban b = (Ban) cboTenBan.getSelectedItem();
+        model.setTenBan(b.getTenBan());
+        model.setMaHD(Integer.valueOf(cboTenBan.getToolTipText()));
+        model.setTenSP(lblTenSP.getText());
+        model.setGia(Double.valueOf(txtGia.getText()));
+        model.setSize(rdoSizeM.isSelected());
+        ///model.getSoLuong(Integer.valueOf(spinerSoLuong.getValue().toString()));   bí
+        model.setTongTien(Double.valueOf(lblTongTien.getText()));
+        return model;
+    }
+    void clearCTHoaDon(){
+        ChiTietHoaDon bh = new ChiTietHoaDon();
+        setStatusCTHoaDon(true);
+    }
     //-----------------------------------------form thóng kê---------------------------------------
     ThongKeDAO daotk = new ThongKeDAO();
     void fillTableLuongSanPhamBan(){
