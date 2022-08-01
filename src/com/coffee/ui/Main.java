@@ -6,11 +6,13 @@
 package com.coffee.ui;
 
 import com.coffee.dao.BanDAO;
+import com.coffee.dao.ChiTietHoaDonDAO;
 import com.coffee.dao.HoaDonDAO;
 import com.coffee.dao.NhanVienDAO;
 import com.coffee.dao.SanPhamDAO;
 import com.coffee.dao.ThongKeDAO;
 import com.coffee.entity.Ban;
+import com.coffee.entity.ChiTietHoaDon;
 import com.coffee.entity.HoaDon;
 import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
@@ -2627,6 +2629,7 @@ public class Main extends javax.swing.JFrame {
         this.fillComboBoxBan();
         this.fillTableLuongSanPhamBan();
         this.fillTableDoanhThu();
+        this.loadTableChiTietHoaDon();
        
         
           
@@ -3358,26 +3361,13 @@ public class Main extends javax.swing.JFrame {
         HoaDon bh = new HoaDon();
         setStatus(true);
     }
-    void fillComboBox(){
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTenBan.getModel();
-        model.removeAllElements();
-        try {
-            List<Ban> list = daoB.selectAll();
-            for(Ban b : list){
-                model.addElement(b.getTenBan());
-            }
-            
-        } catch (Exception e) {
-            MsgBox.alert(this, "Lỗi truy cập dữ liệu");
-        }
-    }
     void fillComboBoxBan(){
         DefaultComboBoxModel model = new DefaultComboBoxModel<>();
         //model.removeAllElements();
         try {
             List<Ban> list = daoB.selectAll();
             for(Ban b : list){
-                model.addElement(b);
+                model.addElement(b.getTenBan());
             }
             cboTenBan.setModel(model);
         } catch (Exception e) {
@@ -3418,6 +3408,23 @@ public class Main extends javax.swing.JFrame {
             } catch (Exception e) {
                 MsgBox.alert(this, "Xóa thất bại!");
             }
+        }
+    }
+    //-----------------------------------------form chi tiết hóa đơn-------------------------------
+    ChiTietHoaDonDAO daocthd = new ChiTietHoaDonDAO();
+    void loadTableChiTietHoaDon(){
+        DefaultTableModel model = (DefaultTableModel) tblBangChiTietHD.getModel();
+        model.setRowCount(0);
+        try {
+            List<ChiTietHoaDon> list = daocthd.selectAll();
+            for (ChiTietHoaDon ct : list) {
+                Object[] row = {
+                    ct.getMaHD(),ct.getTenSP(),ct.getTenBan(),ct.getGia(),ct.isSize(),ct.getSoLuong(),ct.getTongTien()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
     
