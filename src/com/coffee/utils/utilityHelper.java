@@ -303,7 +303,7 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống !" );
             txt.requestFocus();
             return false;
         }
@@ -315,7 +315,7 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống !" );
             txt.requestFocus();
             return false;
         }
@@ -327,7 +327,7 @@ public class utilityHelper {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống " );
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống !" );
             txt.requestFocus();
             return false;
         }
