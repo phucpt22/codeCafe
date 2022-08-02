@@ -645,6 +645,11 @@ public class Main extends javax.swing.JFrame {
                 spinerSoLuongStateChanged(evt);
             }
         });
+        spinerSoLuong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                spinerSoLuongMouseClicked(evt);
+            }
+        });
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel41.setText("Size:");
@@ -695,7 +700,7 @@ public class Main extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
@@ -714,8 +719,8 @@ public class Main extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTongTien)
-                            .addComponent(txtNgayTao))))
-                .addGap(63, 63, 63)
+                            .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(111, 111, 111)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,7 +731,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(lblTenSP)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                                 .addComponent(lblGia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel41)
                                     .addComponent(jLabel45))
@@ -2975,11 +2980,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTienNhanActionPerformed
 
     private void spinerSoLuongStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinerSoLuongStateChanged
-        SpinnerModel model = new SpinnerNumberModel();
-        spinerSoLuong.setModel(model);
-
-        int n = Integer.parseInt(spinerSoLuong.getValue().toString());
-        double a =Double.valueOf(lblGia.getText());
+        int n;
+        n= (Integer) spinerSoLuong.getValue();
+        double a =Double.parseDouble(lblGia.getText());
         lblTongTien.setText(String.valueOf(a*n));
 //        String a,b;
 //        a = lblGia.getText();
@@ -2987,6 +2990,10 @@ public class Main extends javax.swing.JFrame {
 //        double c = (Double) a * b;
 //        lblTongTien.setText(Double.valueOf(a*b));
     }//GEN-LAST:event_spinerSoLuongStateChanged
+
+    private void spinerSoLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spinerSoLuongMouseClicked
+        
+    }//GEN-LAST:event_spinerSoLuongMouseClicked
 //    public boolean checkTrungMaSP(JTextField txt) {
 //        txt.setBackground(white);
 //        if (daobh.selectById(txt.getText()) == null) {
@@ -3450,6 +3457,7 @@ public class Main extends javax.swing.JFrame {
         cboTenBan.getModel().setSelectedItem(daoB.selectById(model.getTenBan())); 
         spinerSoLuong.setValue(model.getSoLuong());
         lblTongTien.setText(String.valueOf(model.getTongTien()));
+        lblGia.setText(String.valueOf(model.getGia()));
         //còn tổng tiền éo biết lấy sao
     }
     ChiTietHoaDon getModelCTHoaDon() {
