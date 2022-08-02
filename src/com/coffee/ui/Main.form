@@ -3930,6 +3930,7 @@
                                         </Property>
                                         <Property name="grosorBordeFilas" type="int" value="0"/>
                                         <Property name="grosorBordeHead" type="int" value="0"/>
+                                        <Property name="rowHeight" type="int" value="30"/>
                                         <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                           <Color blue="ca" green="e5" red="f3" type="rgb"/>
                                         </Property>
