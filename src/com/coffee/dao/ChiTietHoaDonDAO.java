@@ -13,8 +13,8 @@ import java.util.List;
 
 
 public class ChiTietHoaDonDAO extends CoffeeDAO<ChiTietHoaDon, String> {
-    final String INSERT_SQL = "INSERT INTO ChiTietHoaDon (TenSP,TenBan,Gia,Size,SoLuong,TongTien) VALUES (?,?,?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE ChiTietHoaDon SET TenSP,TenBan,Gia,Size,SoLuong,TongTien WHERE MaHD=?";
+    final String INSERT_SQL = "INSERT INTO ChiTietHoaDon (TenSP,TenBan,Gia,Size,SoLuong,ThanhTien) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE ChiTietHoaDon SET TenSP,TenBan,Gia,Size,SoLuong,ThanhTien WHERE MaHD=?";
     final String DELETE_SQL = "DELETE FROM ChiTietHoaDon WHERE MaHD=?";
     final String SELECTALL_SQL = "SELECT * FROM ChiTietHoaDon";
     final String SELECTBYID_SQL = "SELECT * FROM ChiTietHoaDon WHERE MaHD=?";
@@ -60,7 +60,7 @@ public class ChiTietHoaDonDAO extends CoffeeDAO<ChiTietHoaDon, String> {
                 entity.setGia(rs.getDouble("Gia"));
                 entity.setSize(rs.getBoolean("Size"));
                 entity.setSoLuong(rs.getInt("SoLuong"));
-                entity.setTongTien(rs.getDouble("TongTien"));
+                entity.setThanhTien(rs.getDouble("ThanhTien"));
                 list.add(entity);
             }
         } catch (Exception e) {

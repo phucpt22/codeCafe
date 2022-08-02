@@ -20,16 +20,16 @@ public class HoaDonDAO{
     final String SELECTBYID_SQL = "SELECT * FROM HoaDon WHERE MaHD=?";
 
     public void insert(HoaDon entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getTenKH(),entity.getTongTien(),entity.getMaNV(),entity.getNgayTao());
+        JdbcHelper.update(INSERT_SQL, entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat());
     }
 
 
     public void update(HoaDon entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getTenKH(),entity.getTongTien(),entity.getMaNV(),entity.getNgayTao(),entity.getMaHD());    
+        JdbcHelper.update(UPDATE_SQL, entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat(),entity.getMaHD());    
     }
 
 
-    public void delete(Integer id) {
+    public void delete(String id) {
         JdbcHelper.update(DELETE_SQL,id);
     }
 
@@ -56,9 +56,9 @@ public class HoaDonDAO{
                 HoaDon entity = new HoaDon();
                 entity.setMaHD(rs.getInt("MaHD"));
                 entity.setTenKH(rs.getString("TenKH"));
-                entity.setTongTien(rs.getDouble("TongTien"));
                 entity.setMaNV(rs.getString("MaNV"));
                 entity.setNgayTao(rs.getDate("NgayTao"));
+                entity.setGioDat(rs.getString("GioDat"));
                 list.add(entity);
             }
         } catch (Exception e) {

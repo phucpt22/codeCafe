@@ -16,19 +16,19 @@ public class ChiTietHoaDon {
     double Gia;
     boolean Size;
     int SoLuong;
-    double TongTien;
+    double ThanhTien;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int MaHD, String TenSP, String TenBan, double Gia, boolean Size, int SoLuong, double TongTien) {
+    public ChiTietHoaDon(int MaHD, String TenSP, String TenBan, double Gia, boolean Size, int SoLuong, double ThanhTien) {
         this.MaHD = MaHD;
         this.TenSP = TenSP;
         this.TenBan = TenBan;
         this.Gia = Gia;
         this.Size = Size;
         this.SoLuong = SoLuong;
-        this.TongTien = TongTien;
+        this.ThanhTien = ThanhTien;
     }
 
     public int getMaHD() {
@@ -79,11 +79,13 @@ public class ChiTietHoaDon {
         this.SoLuong = SoLuong;
     }
 
-    public double getTongTien() {
-        return TongTien;
+    public double getThanhTien() {
+        return ThanhTien;
     }
 
-    public void setTongTien(double TongTien) {
-        this.TongTien = TongTien;
+    public void setThanhTien(double ThanhTien) {
+        this.ThanhTien = ThanhTien;
     }
+    
+    
 }

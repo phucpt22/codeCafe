@@ -13,18 +13,18 @@ public class HoaDon {
     
     int MaHD;
     String TenKH;
-    double TongTien;
     String MaNV;
     Date NgayTao = XDate.now();
+    String gioDat;
 
-    public HoaDon() {
-    }
-
-    public HoaDon(int MaHD, String TenKH, double TongTien, String MaNV) {
+    public HoaDon(int MaHD, String TenKH, String MaNV, String gioDat) {
         this.MaHD = MaHD;
         this.TenKH = TenKH;
-        this.TongTien = TongTien;
         this.MaNV = MaNV;
+        this.gioDat = gioDat;
+    }
+
+    public HoaDon() {
     }
 
     public int getMaHD() {
@@ -35,21 +35,12 @@ public class HoaDon {
         this.MaHD = MaHD;
     }
 
-    
     public String getTenKH() {
         return TenKH;
     }
 
     public void setTenKH(String TenKH) {
         this.TenKH = TenKH;
-    }
-
-    public double getTongTien() {
-        return TongTien;
-    }
-
-    public void setTongTien(double TongTien) {
-        this.TongTien = TongTien;
     }
 
     public String getMaNV() {
@@ -67,4 +58,21 @@ public class HoaDon {
     public void setNgayTao(Date NgayTao) {
         this.NgayTao = NgayTao;
     }
+
+    public String getGioDat() {
+        return gioDat;
+    }
+
+    public void setGioDat(String gioDat) {
+        this.gioDat = gioDat;
+    }
+
+    
+
+    @Override
+    public String toString(){
+        return gioDat;
+    }
+
+   
 }
