@@ -701,12 +701,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="kGradientPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kGradientPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="kGradientPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="kGradientPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -719,12 +719,15 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="kGradientPanel2" alignment="0" pref="1270" max="32767" attributes="0"/>
+                          <Component id="kGradientPanel2" min="-2" pref="1255" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="kGradientPanel2" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="kGradientPanel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -757,35 +760,34 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane5" alignment="0" pref="1000" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="395" max="32767" attributes="0"/>
+                                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="txtNgayTao" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                      <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtNguoiLap" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       <Component id="txtTenKH" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="678" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="btn_AddHD" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                                      <Component id="btn_DeleteHD" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="btn_UpdateHD" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btn_AddHD" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                                              <Component id="btn_DeleteHD" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
-                                              <Component id="btn_UpdateHD" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                              <Component id="txtNgayTao" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                              <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtNguoiLap" min="-2" pref="107" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="jButton2" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -806,10 +808,13 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" min="-2" pref="184" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btn_AddHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="btn_DeleteHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="btn_UpdateHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jButton2" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="btn_AddHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <Component id="btn_DeleteHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <Component id="btn_UpdateHD" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace pref="15" max="32767" attributes="0"/>
                                   </Group>
@@ -965,6 +970,17 @@
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNguoiLapActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton2">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Tahoma" size="14" style="0"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Print"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -1329,11 +1345,6 @@
                               <SubComponents>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_7">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="7"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1364,11 +1375,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_8">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="8"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1399,11 +1405,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_9">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="9"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1434,11 +1435,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnClear">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="C"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1472,11 +1468,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_4">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="4"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1507,11 +1498,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_5">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="5"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1542,11 +1528,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_6">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="6"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1577,11 +1558,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnDiscount">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="DC"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1612,11 +1588,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_1">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="1"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1647,11 +1618,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_2">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="2"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1682,11 +1648,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_3">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="3"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1717,11 +1678,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnCash">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="Cash"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1752,11 +1708,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_0">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="0"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1787,11 +1738,6 @@
                                 </Component>
                                 <Component class="com.k33ptoo.components.KButton" name="btnSo_000">
                                   <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="000"/>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Tahoma" size="14" style="1"/>
@@ -1877,7 +1823,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="260" y="410" width="1010" height="350"/>
+                              <AbsoluteConstraints x="260" y="410" width="1010" height="430"/>
                             </Constraint>
                           </Constraints>
 
@@ -1896,7 +1842,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jScrollPane6" min="-2" pref="277" max="-2" attributes="0"/>
-                                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                                      <EmptySpace pref="111" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4300,9 +4246,6 @@
                   <Image iconType="3" name="/com/coffee/icon/book.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gi&#x1edb;i Thi&#x1ec7;u"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[91, 57]"/>
@@ -4331,9 +4274,6 @@
                   <Image iconType="3" name="/com/coffee/icon/sync.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i M&#x1ead;t Kh&#x1ea9;u"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[91, 57]"/>
@@ -4362,9 +4302,6 @@
                   <Image iconType="3" name="/com/coffee/icon/turn-off.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[91, 57]"/>
@@ -4416,9 +4353,6 @@
                   <Image iconType="3" name="/com/coffee/icon/logout.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[91, 57]"/>
@@ -4447,9 +4381,6 @@
                   <Image iconType="3" name="/com/coffee/icon/guide-book.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="H&#x1b0;&#x1edb;ng D&#x1eab;n"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[91, 57]"/>

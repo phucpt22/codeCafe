@@ -29,15 +29,27 @@ import static java.awt.Color.white;
 import java.awt.Component;
 import java.awt.Container;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.table.TableColumnModel;
+import net.sf.jasperreports.engine.JRException;
+//import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.JasperCompileManager;
 
 /**
  *
@@ -107,6 +119,7 @@ public class Main extends javax.swing.JFrame {
         txtNgayTao = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         txtNguoiLap = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listTenSP = new javax.swing.JList<>();
@@ -694,36 +707,45 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Print");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(395, Short.MAX_VALUE)
+                .addComponent(jLabel49)
+                .addGap(30, 30, 30)
+                .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(jLabel50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNguoiLap, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel19)
                 .addGap(45, 45, 45)
                 .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(btn_AddHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173)
-                        .addComponent(btn_DeleteHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(169, 169, 169)
-                        .addComponent(btn_UpdateHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(168, 168, 168))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel49)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel50)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNguoiLap, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116))))
+                .addContainerGap(678, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btn_AddHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
+                .addComponent(btn_DeleteHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(btn_UpdateHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -740,10 +762,12 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_AddHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_DeleteHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_UpdateHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_AddHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_DeleteHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_UpdateHD, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -894,7 +918,6 @@ public class Main extends javax.swing.JFrame {
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnSo_7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_7.setText("7");
         btnSo_7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_7.setkBorderRadius(0);
@@ -906,7 +929,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_7.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_7.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_8.setText("8");
         btnSo_8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_8.setkBorderRadius(0);
@@ -918,7 +940,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_8.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_8.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_9.setText("9");
         btnSo_9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_9.setkBorderRadius(0);
@@ -930,7 +951,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_9.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_9.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClear.setText("C");
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnClear.setkBorderRadius(0);
@@ -947,7 +967,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnSo_4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_4.setText("4");
         btnSo_4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_4.setkBorderRadius(0);
@@ -959,7 +978,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_4.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_4.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_5.setText("5");
         btnSo_5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_5.setkBorderRadius(0);
@@ -971,7 +989,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_5.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_5.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_6.setText("6");
         btnSo_6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_6.setkBorderRadius(0);
@@ -983,7 +1000,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_6.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_6.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnDiscount.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDiscount.setText("DC");
         btnDiscount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDiscount.setkBorderRadius(0);
@@ -995,7 +1011,6 @@ public class Main extends javax.swing.JFrame {
         btnDiscount.setkPressedColor(new java.awt.Color(204, 102, 0));
         btnDiscount.setkStartColor(new java.awt.Color(255, 143, 30));
 
-        btnSo_1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_1.setText("1");
         btnSo_1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_1.setkBorderRadius(0);
@@ -1007,7 +1022,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_1.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_1.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_2.setText("2");
         btnSo_2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_2.setkBorderRadius(0);
@@ -1019,7 +1033,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_2.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_2.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_3.setText("3");
         btnSo_3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_3.setkBorderRadius(0);
@@ -1031,7 +1044,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_3.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_3.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnCash.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCash.setText("Cash");
         btnCash.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCash.setkBorderRadius(0);
@@ -1043,7 +1055,6 @@ public class Main extends javax.swing.JFrame {
         btnCash.setkPressedColor(new java.awt.Color(204, 102, 0));
         btnCash.setkStartColor(new java.awt.Color(255, 143, 30));
 
-        btnSo_0.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_0.setText("0");
         btnSo_0.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_0.setkBorderRadius(0);
@@ -1055,7 +1066,6 @@ public class Main extends javax.swing.JFrame {
         btnSo_0.setkHoverStartColor(new java.awt.Color(226, 226, 226));
         btnSo_0.setkStartColor(new java.awt.Color(235, 235, 235));
 
-        btnSo_000.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSo_000.setText("000");
         btnSo_000.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSo_000.setkBorderRadius(0);
@@ -1200,10 +1210,10 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
-        kGradientPanel2.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 1010, 350));
+        kGradientPanel2.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 1010, 430));
 
         cboTenBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboTenBan.addActionListener(new java.awt.event.ActionListener() {
@@ -1322,22 +1332,24 @@ public class Main extends javax.swing.JFrame {
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
+            .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1255, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_tab2Layout = new javax.swing.GroupLayout(pnl_tab2);
         pnl_tab2.setLayout(pnl_tab2Layout);
         pnl_tab2Layout.setHorizontalGroup(
             pnl_tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         pnl_tab2Layout.setVerticalGroup(
             pnl_tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pnl_tab.add(pnl_tab2);
@@ -2208,6 +2220,7 @@ public class Main extends javax.swing.JFrame {
         tblNhanVien.setGridColor(new java.awt.Color(255, 255, 255));
         tblNhanVien.setGrosorBordeFilas(0);
         tblNhanVien.setGrosorBordeHead(0);
+        tblNhanVien.setRowHeight(30);
         tblNhanVien.setSelectionBackground(new java.awt.Color(243, 229, 202));
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -2458,7 +2471,6 @@ public class Main extends javax.swing.JFrame {
         btn_gioiThieu.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_gioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/book.png"))); // NOI18N
         btn_gioiThieu.setText("Giới Thiệu");
-        btn_gioiThieu.setBorder(null);
         btn_gioiThieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_gioiThieu.setMaximumSize(new java.awt.Dimension(91, 57));
         btn_gioiThieu.setMinimumSize(new java.awt.Dimension(91, 57));
@@ -2474,7 +2486,6 @@ public class Main extends javax.swing.JFrame {
         btn_doiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_doiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/sync.png"))); // NOI18N
         btn_doiMatKhau.setText("Đổi Mật Khẩu");
-        btn_doiMatKhau.setBorder(null);
         btn_doiMatKhau.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_doiMatKhau.setMaximumSize(new java.awt.Dimension(91, 57));
         btn_doiMatKhau.setMinimumSize(new java.awt.Dimension(91, 57));
@@ -2490,7 +2501,6 @@ public class Main extends javax.swing.JFrame {
         btn_thoat.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/turn-off.png"))); // NOI18N
         btn_thoat.setText("Thoát");
-        btn_thoat.setBorder(null);
         btn_thoat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_thoat.setMaximumSize(new java.awt.Dimension(91, 57));
         btn_thoat.setMinimumSize(new java.awt.Dimension(91, 57));
@@ -2520,7 +2530,6 @@ public class Main extends javax.swing.JFrame {
         btn_dangXuat.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_dangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/logout.png"))); // NOI18N
         btn_dangXuat.setText("Đăng Xuất");
-        btn_dangXuat.setBorder(null);
         btn_dangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_dangXuat.setMaximumSize(new java.awt.Dimension(91, 57));
         btn_dangXuat.setMinimumSize(new java.awt.Dimension(91, 57));
@@ -2536,7 +2545,6 @@ public class Main extends javax.swing.JFrame {
         btn_huongDan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_huongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/guide-book.png"))); // NOI18N
         btn_huongDan.setText("Hướng Dẫn");
-        btn_huongDan.setBorder(null);
         btn_huongDan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_huongDan.setMaximumSize(new java.awt.Dimension(91, 57));
         btn_huongDan.setMinimumSize(new java.awt.Dimension(91, 57));
@@ -2934,7 +2942,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_DeleteHDActionPerformed
 
     private void btn_AddHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddHDActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_AddHDActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -3010,6 +3018,20 @@ public class Main extends javax.swing.JFrame {
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         clearSP();
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            JasperReport rpt = JasperCompileManager.compileReport("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QLCafe\\src\\com\\coffee\\ui\\HoaDon.jrxml");
+            String user="sa";
+            String pass="123";
+            String url="jdbc:sqlserver://localhost:1433;database=DuAn1";
+            Connection conn = DriverManager.getConnection(url,user,pass);
+            JasperPrint p = JasperFillManager.fillReport(rpt,null,conn);
+            JasperViewer.viewReport(p,false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 //    public boolean checkTrungMaSP(JTextField txt) {
 //        txt.setBackground(white);
 //        if (daobh.selectById(txt.getText()) == null) {
@@ -3616,6 +3638,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.ButtonGroup grpSize;
     private javax.swing.ButtonGroup grpVaiTro;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
