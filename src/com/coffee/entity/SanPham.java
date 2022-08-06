@@ -9,6 +9,7 @@ import java.util.Date;
 
 
 public class SanPham {
+    String MaSP;
     String TenSP;
     String LoaiSP;
     double Gia;
@@ -17,11 +18,20 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String TenSP, String LoaiSP, double Gia, String Hinh) {
+    public SanPham(String MaSP, String TenSP, String LoaiSP, double Gia, String Hinh) {
+        this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.LoaiSP = LoaiSP;
         this.Gia = Gia;
         this.Hinh = Hinh;
+    }
+
+    public String getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
     }
 
     public String getTenSP() {
@@ -55,6 +65,6 @@ public class SanPham {
     public void setHinh(String Hinh) {
         this.Hinh = Hinh;
     }
-    
-    
+
+
 }
