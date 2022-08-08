@@ -13,19 +13,19 @@ import java.util.List;
 
 
 public class HoaDonDAO{
-    final String INSERT_SQL = "INSERT INTO HoaDon (TenKH,TongTien,MaNV,NgayTao) VALUES (?,?,?,?)";
-    final String UPDATE_SQL = "UPDATE HoaDon SET TenKH=?,TongTien=?,MaNV=?,NgayTao=? WHERE MaHD=?";
+    final String INSERT_SQL = "INSERT INTO HoaDon (MaHD,,MaSP,TenKH,MaNV,NgayTao,GioDat) VALUES (?,?,?,?,?,?)";
+    final String UPDATE_SQL = "UPDATE HoaDon SET TenKH,MaNV,NgayTao,GioDat WHERE MaHD=?";
     final String DELETE_SQL = "DELETE FROM HoaDon WHERE MaHD=?";
     final String SELECTALL_SQL = "SELECT * FROM HoaDon";
     final String SELECTBYID_SQL = "SELECT * FROM HoaDon WHERE MaHD=?";
 
     public void insert(HoaDon entity) {
-        JdbcHelper.update(INSERT_SQL, entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat());
+        JdbcHelper.update(INSERT_SQL, entity.getMaHD(), entity.getMaSP(), entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat());
     }
 
 
     public void update(HoaDon entity) {
-        JdbcHelper.update(UPDATE_SQL, entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat(),entity.getMaHD());    
+        JdbcHelper.update(UPDATE_SQL, entity.getMaSP(), entity.getTenKH(),entity.getMaNV(),entity.getNgayTao(),entity.getGioDat(),entity.getMaHD());    
     }
 
 
@@ -54,7 +54,8 @@ public class HoaDonDAO{
             ResultSet rs = JdbcHelper.query(sql, args);
             while(rs.next()){
                 HoaDon entity = new HoaDon();
-                entity.setMaHD(rs.getInt("MaHD"));
+                entity.setMaHD(rs.getString("MaHD"));
+                entity.setMaSP(rs.getString("MaSP"));
                 entity.setTenKH(rs.getString("TenKH"));
                 entity.setMaNV(rs.getString("MaNV"));
                 entity.setNgayTao(rs.getDate("NgayTao"));
