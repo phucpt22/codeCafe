@@ -10,7 +10,8 @@ package com.coffee.entity;
  * @author Admin
  */
 public class ChiTietHoaDon {
-    int MaHD;
+    String MaHD;
+    String MaSP;
     String TenSP;
     String TenBan;
     double Gia;
@@ -21,22 +22,32 @@ public class ChiTietHoaDon {
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int MaHD, String TenSP, String TenBan, double Gia, boolean Size, int SoLuong, double ThanhTien) {
+    public ChiTietHoaDon(String MaHD, String MaSP, String TenSP, String TenBan, double Gia, boolean Size, int SoLuong, double ThanhTien) {
         this.MaHD = MaHD;
+        this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.TenBan = TenBan;
         this.Gia = Gia;
         this.Size = Size;
         this.SoLuong = SoLuong;
         this.ThanhTien = ThanhTien;
+
     }
 
-    public int getMaHD() {
+    public String getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(int MaHD) {
+    public void setMaHD(String MaHD) {
         this.MaHD = MaHD;
+    }
+
+    public String getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
     }
 
     public String getTenSP() {
@@ -86,6 +97,4 @@ public class ChiTietHoaDon {
     public void setThanhTien(double ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
-    
-    
 }

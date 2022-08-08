@@ -11,28 +11,38 @@ import java.util.Date;
 
 public class HoaDon {
     
-    int MaHD;
+    String MaHD;
+    String MaSP;
     String TenKH;
     String MaNV;
     Date NgayTao = XDate.now();
     String gioDat;
 
-    public HoaDon(int MaHD, String TenKH, String MaNV, String gioDat) {
+    public HoaDon() {
+    }
+
+    public HoaDon(String MaHD, String MaSP, String TenKH, String MaNV, String gioDat) {
         this.MaHD = MaHD;
+        this.MaSP = MaSP;
         this.TenKH = TenKH;
         this.MaNV = MaNV;
         this.gioDat = gioDat;
     }
 
-    public HoaDon() {
-    }
-
-    public int getMaHD() {
+    public String getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(int MaHD) {
+    public void setMaHD(String MaHD) {
         this.MaHD = MaHD;
+    }
+
+    public String getMaSP() {
+        return MaSP;
+    }
+
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
     }
 
     public String getTenKH() {
@@ -66,8 +76,6 @@ public class HoaDon {
     public void setGioDat(String gioDat) {
         this.gioDat = gioDat;
     }
-
-    
 
     @Override
     public String toString(){
