@@ -3175,9 +3175,9 @@ public class Main extends javax.swing.JFrame {
         model.setTenBan(cboTenBan.getToolTipText());
 //        Ban b = (Ban) cboTenBan.getSelectedItem();
 //        model.setTenBan(b.getTenBan());
-       model.setSoLuong(Integer.valueOf(spinerSoLuong.getValue().toString()));
         model.setGia(Double.valueOf(txtGia.getText()));
         model.setSize(rdoSizeM.isSelected());
+        model.setSoLuong(Integer.valueOf(spinerSoLuong.getValue().toString()));
         model.setThanhTien(Double.valueOf(lblThanhTien.getText()));
         return model;
     }
