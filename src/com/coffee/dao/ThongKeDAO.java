@@ -7,6 +7,7 @@ package com.coffee.dao;
 
 import com.coffee.utils.JdbcHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,11 @@ public class ThongKeDAO {
         String sql = "{CALL sp_DoanhThu}";
         String[] cols = {"SoHD","TenSP", "Doanh thu", "ThapNhat", "CaoNhat", "TrungBinh"};
         return this.getListOfArray(sql, cols);
+    }
+    public List<Object[]> getLichSuHD(int nam) {
+        String sql = "{CALL sp_LichSuHoaDon(?)}";
+        String[] cols = {"MaHD","MaSP","TenSP","Gia","SoLuong","ThanhTien","TenBan","MaNV","NgayTao"};
+        return this.getListOfArray(sql, cols, nam);
     }
     
 }
