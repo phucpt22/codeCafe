@@ -150,7 +150,7 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        rSTableMetro1 = new rojerusan.RSTableMetro();
+        tblLichSuHoaDon = new rojerusan.RSTableMetro();
         cboNam = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         pnl_tab4 = new com.k33ptoo.components.KGradientPanel();
@@ -597,7 +597,8 @@ public class Main extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Order", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
-        btn_DeleteHD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_DeleteHD.setBackground(new java.awt.Color(255, 255, 255));
+        btn_DeleteHD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_DeleteHD.setText("Xóa");
         btn_DeleteHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -605,7 +606,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btn_AddHD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_AddHD.setBackground(new java.awt.Color(255, 255, 255));
+        btn_AddHD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_AddHD.setText("Đặt Mua");
         btn_AddHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -636,6 +638,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cboTenBan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cboTenBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboTenBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -664,7 +667,7 @@ public class Main extends javax.swing.JFrame {
         rdoSizeL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdoSizeL.setText("L");
 
-        lblGia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lblGia.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblGia.setText("....");
 
         lbl_timeNow.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -676,8 +679,10 @@ public class Main extends javax.swing.JFrame {
         lblThanhTien.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblThanhTien.setForeground(new java.awt.Color(255, 0, 51));
 
+        jLabel47.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel47.setText("Mã SP:");
 
+        lblMaSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMaSP.setText("........");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -771,7 +776,7 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel46)
                             .addComponent(txtMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
                     .addComponent(lblMaSP))
@@ -779,7 +784,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_AddHD, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(btn_DeleteHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         kGradientPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 960, 330));
@@ -940,7 +945,9 @@ public class Main extends javax.swing.JFrame {
 
         jPanel7.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 260, 120));
 
-        btnIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnIn.setBackground(new java.awt.Color(0, 51, 255));
+        btnIn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnIn.setForeground(new java.awt.Color(255, 255, 255));
         btnIn.setText("Lưu và In");
         btnIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1006,9 +1013,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jScrollPane6.setViewportView(tblBill);
-        if (tblBill.getColumnModel().getColumnCount() > 0) {
-            tblBill.getColumnModel().getColumn(0).setCellEditor(null);
-        }
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1070,7 +1074,7 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("Lịch sử hóa đơn");
 
-        rSTableMetro1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLichSuHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null}
@@ -1079,13 +1083,13 @@ public class Main extends javax.swing.JFrame {
                 "MaHD", "Mã SP", "Tên SP", "Đơn giá", "Số lượng", "Thành Tiền", "Tên bàn", "Mã NV", "Ngày tạo"
             }
         ));
-        rSTableMetro1.setGrosorBordeFilas(0);
-        rSTableMetro1.setGrosorBordeHead(0);
-        rSTableMetro1.setRowHeight(30);
-        rSTableMetro1.setRowMargin(0);
-        jScrollPane5.setViewportView(rSTableMetro1);
+        tblLichSuHoaDon.setGrosorBordeFilas(0);
+        tblLichSuHoaDon.setGrosorBordeHead(0);
+        tblLichSuHoaDon.setRowHeight(30);
+        tblLichSuHoaDon.setRowMargin(0);
+        jScrollPane5.setViewportView(tblLichSuHoaDon);
 
-        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022" }));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("Năm:");
@@ -1777,6 +1781,7 @@ public class Main extends javax.swing.JFrame {
         tblNhanVien.setGridColor(new java.awt.Color(255, 255, 255));
         tblNhanVien.setGrosorBordeFilas(0);
         tblNhanVien.setGrosorBordeHead(0);
+        tblNhanVien.setRowHeight(30);
         tblNhanVien.setSelectionBackground(new java.awt.Color(243, 229, 202));
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -2597,6 +2602,7 @@ public class Main extends javax.swing.JFrame {
         n= (Integer) spinerSoLuong.getValue();
         double a =Double.parseDouble(lblGia.getText());
         lblThanhTien.setText(String.valueOf(a*n));
+        txtThanhTien.setText(String.valueOf(a*n));
     }//GEN-LAST:event_spinerSoLuongStateChanged
 
     private void txtTienNhanCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienNhanCaretUpdate
@@ -3124,13 +3130,13 @@ public class Main extends javax.swing.JFrame {
     void fillComboBoxNam() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam.getModel();
         model.removeAllElements();
-        List<Integer> list = daotk.selectYears();
+        List<Integer> list = daoct.selectYears();
         for(Integer year : list){
             model.addElement(year);
         }
     }
     void fillTableLichSuHD() {
-        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblLichSuHoaDon.getModel();
         model.setRowCount(0);
         int nam = (Integer)cboNam.getSelectedItem();
         List<Object[]> list = daotk.getLichSuHD(nam);
@@ -3301,7 +3307,6 @@ public class Main extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel pnl_tab5;
     private com.k33ptoo.components.KGradientPanel pnl_tab6;
     private javax.swing.JPanel pnl_thanhNgan;
-    private rojerusan.RSTableMetro rSTableMetro1;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNhanVien;
     private javax.swing.JRadioButton rdoNu;
@@ -3318,6 +3323,7 @@ public class Main extends javax.swing.JFrame {
     private rojerusan.RSTableMetro tblBang;
     private rojerusan.RSTableMetro tblBill;
     private rojerusan.RSTableMetro tblDoanhThu;
+    private rojerusan.RSTableMetro tblLichSuHoaDon;
     private rojerusan.RSTableMetro tblMatHangBan;
     private rojerusan.RSTableMetro tblNhanVien;
     private javax.swing.JTextField txtDiaChi;
