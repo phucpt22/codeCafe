@@ -1172,6 +1172,7 @@
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listTenSPMouseClicked"/>
+                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listTenSPMouseEntered"/>
                                   </Events>
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1198,7 +1199,7 @@
                                 <Container class="javax.swing.JPanel" name="jPanel17">
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                      <AbsoluteConstraints x="0" y="0" width="260" height="40"/>
+                                      <AbsoluteConstraints x="0" y="0" width="260" height="30"/>
                                     </Constraint>
                                   </Constraints>
 
@@ -1215,10 +1216,11 @@
                                     </DimensionLayout>
                                     <DimensionLayout dim="1">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="txtTienNhan" alignment="3" pref="40" max="32767" attributes="0"/>
-                                              <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="txtTienNhan" alignment="0" pref="30" max="32767" attributes="0"/>
                                       </Group>
                                     </DimensionLayout>
                                   </Layout>
@@ -1249,7 +1251,7 @@
                                 <Container class="javax.swing.JPanel" name="jPanel18">
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                      <AbsoluteConstraints x="0" y="40" width="260" height="40"/>
+                                      <AbsoluteConstraints x="0" y="30" width="260" height="30"/>
                                     </Constraint>
                                   </Constraints>
 
@@ -1267,7 +1269,7 @@
                                     <DimensionLayout dim="1">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="txtTienThua" alignment="3" pref="40" max="32767" attributes="0"/>
+                                              <Component id="txtTienThua" alignment="3" pref="30" max="32767" attributes="0"/>
                                               <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1299,7 +1301,7 @@
                                 <Container class="javax.swing.JPanel" name="jPanel20">
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                      <AbsoluteConstraints x="0" y="80" width="260" height="40"/>
+                                      <AbsoluteConstraints x="0" y="90" width="260" height="30"/>
                                     </Constraint>
                                   </Constraints>
 
@@ -1307,8 +1309,58 @@
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                                              <EmptySpace pref="17" max="32767" attributes="0"/>
                                               <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtTongcong" min="-2" pref="153" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                    <DimensionLayout dim="1">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                              <Component id="txtTongcong" alignment="3" pref="30" max="32767" attributes="0"/>
+                                              <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                  </Layout>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JTextField" name="txtTongcong">
+                                      <Properties>
+                                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                          <Font name="Tahoma" size="14" style="0"/>
+                                        </Property>
+                                        <Property name="horizontalAlignment" type="int" value="4"/>
+                                        <Property name="text" type="java.lang.String" value="0"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTongcongActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="jLabel56">
+                                      <Properties>
+                                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                          <Font name="Tahoma" size="14" style="0"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng c&#x1ed9;ng:"/>
+                                      </Properties>
+                                    </Component>
+                                  </SubComponents>
+                                </Container>
+                                <Container class="javax.swing.JPanel" name="jPanel21">
+                                  <Constraints>
+                                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                      <AbsoluteConstraints x="0" y="60" width="260" height="30"/>
+                                    </Constraint>
+                                  </Constraints>
+
+                                  <Layout>
+                                    <DimensionLayout dim="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="txtThanhTien" min="-2" pref="153" max="-2" attributes="0"/>
                                           </Group>
@@ -1317,8 +1369,8 @@
                                     <DimensionLayout dim="1">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="txtThanhTien" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtThanhTien" alignment="3" pref="30" max="32767" attributes="0"/>
+                                              <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -1336,12 +1388,12 @@
                                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtThanhTienActionPerformed"/>
                                       </Events>
                                     </Component>
-                                    <Component class="javax.swing.JLabel" name="jLabel56">
+                                    <Component class="javax.swing.JLabel" name="jLabel57">
                                       <Properties>
                                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                           <Font name="Tahoma" size="14" style="0"/>
                                         </Property>
-                                        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng C&#x1ed9;ng:"/>
+                                        <Property name="text" type="java.lang.String" value="Th&#xe0;nh ti&#x1ec1;n:"/>
                                       </Properties>
                                     </Component>
                                   </SubComponents>
@@ -1463,9 +1515,17 @@
                                       <TableColumnModel selectionModel="0">
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
-                                          <Editor editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                            <Connection code="new DefaultCellEditor(jComboBox1)" type="code"/>
-                                          </Editor>
+                                          <Editor editor="org.netbeans.modules.form.RADConnectionPropertyEditor"/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
                                           <Renderer/>
                                         </Column>
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -1511,6 +1571,9 @@
                                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                     </Property>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblBillMousePressed"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
