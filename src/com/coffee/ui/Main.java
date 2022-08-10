@@ -2581,7 +2581,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_DeleteHDActionPerformed
 
     private void btn_AddHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddHDActionPerformed
-        insertHD();
+        
         loadDuLieuVao();
         chenDuLieuVaoTable();
         spinerSoLuong.setValue(1);
@@ -2633,7 +2633,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtThanhTienActionPerformed
 
     private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
-
+        insertHD();
         for (ChiTietHoaDon ct : arrayct) {
             daoct.insert(ct);
         }
@@ -3001,7 +3001,7 @@ public class Main extends javax.swing.JFrame {
 
     public void clock() {
         new Timer(20, new ActionListener() {
-            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
+            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtTime.setText(format.format(new Date()));
