@@ -30,7 +30,11 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -151,6 +155,7 @@ public class Main extends javax.swing.JFrame {
         btnIn = new javax.swing.JButton();
         jLabel46 = new javax.swing.JLabel();
         txtMaHoaDon = new javax.swing.JTextField();
+        lbLoiGia = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -764,7 +769,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(txtNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -795,11 +800,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLayMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_DeleteHD, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_AddHD, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -824,7 +829,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(68, 68, 68))
         );
 
-        kGradientPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 910, 330));
+        kGradientPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 900, 370));
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -991,7 +996,7 @@ public class Main extends javax.swing.JFrame {
                 btnInActionPerformed(evt);
             }
         });
-        jPanel7.add(btnIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 260, 50));
+        jPanel7.add(btnIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 260, 50));
 
         jLabel46.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel46.setText("Mã HD:");
@@ -1004,7 +1009,11 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel7.add(txtMaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 250, 150, -1));
 
-        kGradientPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 262, 330));
+        lbLoiGia.setForeground(new java.awt.Color(255, 0, 0));
+        lbLoiGia.setText("....");
+        jPanel7.add(lbLoiGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        kGradientPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 262, 370));
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -1070,11 +1079,11 @@ public class Main extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
         );
 
-        kGradientPanel2.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 1160, 490));
+        kGradientPanel2.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 1160, 450));
 
         javax.swing.GroupLayout kGradientPanel3Layout = new javax.swing.GroupLayout(kGradientPanel3);
         kGradientPanel3.setLayout(kGradientPanel3Layout);
@@ -2264,6 +2273,7 @@ public class Main extends javax.swing.JFrame {
         this.fillTableLichSuHD();
         this.clearHoaDon();
         rdoSizeM.setSelected(true);
+        txtLayMaNV.setEnabled(false);
         //this.resetbang();
     }
 
@@ -2613,7 +2623,45 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_listTenSPMouseEntered
 
     private void txtTienNhanCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienNhanCaretUpdate
-
+        int Repay;
+        //tính Discount
+        while (true) {
+            if (txtTienNhan.getText().trim().equals("")) {
+                lbLoiGia.setText("Khách hàng chưa đưa tiền.");
+                txtTienThua.setText("0");
+                btnIn.setEnabled(false);
+                txtMaHoaDon.setEnabled(false);
+                return;
+            } else if (!txtTienNhan.getText().trim().matches("\\d+")) {
+                lbLoiGia.setText("Tiền có dạng số.");
+                txtTienThua.setText("0");
+                btnIn.setEnabled(false);
+                txtMaHoaDon.setEnabled(false);
+                return;
+            } else {
+                lbLoiGia.setText("");
+                btnIn.setEnabled(false);
+                txtMaHoaDon.setEnabled(false);
+                break;
+            }
+        }
+        String total = txtThanhTien.getText().replaceAll(",", "");
+        Repay = Integer.parseInt(txtTienNhan.getText()) - Integer.parseInt(total);
+        txtTienNhan.setText(formatter.format(Repay));
+        if (Repay < 0) {
+            lbLoiGia.setText("Khách hàng chưa đưa đủ tiền.");
+            btnIn.setEnabled(false);
+            txtMaHoaDon.setEnabled(false);
+            txtTienThua.setText("0");
+        } else if (Integer.parseInt(txtTienNhan.getText()) == 0) {
+            btnIn.setEnabled(false);
+            txtMaHoaDon.setEnabled(false);
+            txtTienThua.setText("0");
+        } else {
+            lbLoiGia.setText("");
+            btnIn.setEnabled(true);
+            txtMaHoaDon.setEnabled(true);
+        }
     }//GEN-LAST:event_txtTienNhanCaretUpdate
 
     private void txtTienNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienNhanActionPerformed
@@ -2633,22 +2681,73 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtThanhTienActionPerformed
 
     private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblBill.getModel();
+        int line = tblBill.getRowCount();
         insertHD();
         for (ChiTietHoaDon ct : arrayct) {
             daoct.insert(ct);
         }
 
-        //        try {
-        //            JasperReport rpt = JasperCompileManager.compileReport("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QLCafe\\src\\com\\coffee\\ui\\HoaDon.jrxml");
-        //            String user = "sa";
-        //            String pass = "123";
-        //            String url = "jdbc:sqlserver://localhost:1433;database=DuAn1";
-        //            Connection conn = DriverManager.getConnection(url, user, pass);
-        //            JasperPrint p = JasperFillManager.fillReport(rpt, null, conn);
-        //            JasperViewer.viewReport(p, false);
-        //        } catch (Exception e) {
-        //            e.printStackTrace();
-        //        }
+//        try {
+//            JasperReport rpt = JasperCompileManager.compileReport("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QLCafe\\src\\com\\coffee\\ui\\HoaDon.jrxml");
+//            String user = "sa";
+//            String pass = "123";
+//            String url = "jdbc:sqlserver://localhost:1433;database=DuAn1";
+//            Connection conn = DriverManager.getConnection(url, user, pass);
+//            JasperPrint p = JasperFillManager.fillReport(rpt, null, conn);
+//            JasperViewer.viewReport(p, false);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        try{
+            int tiennhan = Integer.parseInt(txtTienNhan.getText());
+            Date now = new Date();
+            Writer bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("History//" + txtMaHoaDon.getText().trim() + ".txt"), "UTF8"));
+            bw.write("\t\t\tTHE GARDEN COFFEE\r\n\r\n");
+            bw.write("\t\t590 CMT8, P.11, Q.3, TPHCM\r\n");
+            bw.write("\t\t\tSĐT: 01212692802\r\n\r\n");
+            bw.write("\t\t\tHÓA ĐƠN BÁN HÀNG\r\n\r\n");
+            bw.write("Mã hóa đơn: " + txtMaHoaDon.getText() + "\r\n");
+            bw.write("Thời gian: " + ft.format(now) + "\r\n");
+            bw.write("NHÂN VIÊN: " + lblHoTen.getText() + "\r\n");
+            bw.write("------------------------------------------------------------\r\n");
+            bw.write("Mã\tTên sản phẩm\tTên bàn\tĐơn giá\tKích thước\tSố lượng\tThành tiền\r\n");
+            bw.write("-----------------------------------------------------------\r\n");
+            //Ghi sản phẩm
+            int quantotal = 0;
+            for (int i = 0; i < line; i++) {
+                String id = (String) model.getValueAt(i, 0);
+                String name = (String) model.getValueAt(i, 1);
+                String ban = (String) model.getValueAt(i, 2);
+                String price = String.valueOf(model.getValueAt(i, 3));
+                String size = (String) model.getValueAt(i, 4);
+                String quantity = String.valueOf(model.getValueAt(i, 5));
+                String intomoney = String.valueOf(model.getValueAt(i, 6));
+                bw.write((i + 1) + ". " + name + "\r\n");
+                bw.write(id + "\t"+ ban + "\t" + size + "\t\t" + quantity + "\t\t" + price + "\t" + intomoney + "\r\n\r\n");
+                quantotal += Integer.parseInt(quantity);
+            }
+            bw.write("------------------------------------------------------------\r\n");
+            bw.write("Tổng cộng:\t\t" + quantotal + "\t\t\t" + txtTongcong.getText() + " VNĐ\r\n");
+            bw.write("\t\t--------------------------------------------\r\n");
+            bw.write("\t\tThành tiền:\t\t\t" + txtThanhTien.getText() + " VNĐ\r\n");
+            bw.write("\t\t--------------------------------------------\r\n");
+            bw.write("\t\tTiền khách đưa:\t\t\t" + formatter.format(tiennhan) + " VNĐ\r\n");
+            bw.write("\t\tTiền trả lại:\t\t\t" + txtTienThua.getText() + " VNĐ\r\n");
+            bw.write("------------------------------------------------------------\r\n");
+            bw.write("------------------------------------------------------------\r\n");
+            bw.write("Mật khẩu Wifi: QuanCafe4N\r\n");
+            bw.write("---------------------CÁM ƠN QUÝ KHÁCH!----------------------");
+            bw.close();
+        }catch(Exception e){
+        
+        }
+        cboTenBan.setEnabled(true);
+        model.getDataVector().removeAllElements();
+        cboTenBan.setSelectedIndex(0);
+        spinerSoLuong.setValue(1);
+        txtTenKH.setText("");
     }//GEN-LAST:event_btnInActionPerformed
 
     private void txtMaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHoaDonActionPerformed
@@ -3042,6 +3141,9 @@ public class Main extends javax.swing.JFrame {
                         chcked = 1;
                     }
                 }
+                double tienmoi = Double.parseDouble(lblThanhTien.getText());
+                double thanhtien = arrayct.get(i).getThanhTien() + tienmoi;
+                txtThanhTien.setText(formatter.format(thanhtien));
             }
         }
         if (chcked == 0) {
@@ -3284,6 +3386,7 @@ public class Main extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private com.k33ptoo.components.KGradientPanel kGradientPanel3;
     private com.k33ptoo.components.KGradientPanel kGradientPanel9;
+    private javax.swing.JLabel lbLoiGia;
     private javax.swing.JLabel lblGia;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblHoTen;
