@@ -2243,7 +2243,7 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    NumberFormat formatter = new DecimalFormat("#,###");
+    NumberFormat formatter = new DecimalFormat("###");
 
     void init() {
 
@@ -2645,9 +2645,10 @@ public class Main extends javax.swing.JFrame {
                 break;
             }
         }
-        String total = txtThanhTien.getText().replaceAll(",", "");
+        String total = txtThanhTien.getText();
         Repay = Integer.parseInt(txtTienNhan.getText()) - Integer.parseInt(total);
-        txtTienNhan.setText(formatter.format(Repay));
+        txtTienThua.setText(String.valueOf(Repay));
+        txtTongcong.setText(String.valueOf(total));
         if (Repay < 0) {
             lbLoiGia.setText("Khách hàng chưa đưa đủ tiền.");
             btnIn.setEnabled(false);
