@@ -8,7 +8,6 @@ package com.coffee.dao;
 import com.coffee.entity.ChiTietHoaDon;
 import com.coffee.utils.JdbcHelper;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,20 +73,5 @@ public class ChiTietHoaDonDAO extends CoffeeDAO<ChiTietHoaDon, String> {
     public List<ChiTietHoaDon> selectByKeyword(String keyword){
         String sql="SELECT * FROM ChiTietHoaDon WHERE HoTen LIKE ? ";
         return this.selectBySql(sql, "%"+ keyword +"%");    
-    }
-    public List<Integer> selectYears() {
-        String sql="SELECT DISTINCT year(NgayTao) Year FROM ChiTietHoaDon ct inner join HoaDon hd on ct.MaHD = hd.MaHD ORDER BY Year DESC";
-        List<Integer> list=new ArrayList<>();
-        try {
-           ResultSet rs = JdbcHelper.query(sql);
-           while(rs.next()){
-                 list.add(rs.getInt(1));
-            }
-            rs.getStatement().getConnection().close();
-            return list;
-        } 
-        catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 }

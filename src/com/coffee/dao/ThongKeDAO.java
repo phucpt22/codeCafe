@@ -40,10 +40,10 @@ public class ThongKeDAO {
         String[] cols = {"SoHD","TenSP", "Doanh thu", "ThapNhat", "CaoNhat", "TrungBinh"};
         return this.getListOfArray(sql, cols);
     }
-    public List<Object[]> getLichSuHD(int nam) {
-        String sql = "{CALL sp_LichSuHoaDon(?)}";
+    public List<Object[]> getLichSuHD() {
+        String sql = "{CALL sp_LichSuHoaDon}";
         String[] cols = {"MaHD","MaSP","TenSP","Gia","SoLuong","ThanhTien","TenBan","MaNV","NgayTao"};
-        return this.getListOfArray(sql, cols, nam);
+        return this.getListOfArray(sql, cols);
     }
     
 }

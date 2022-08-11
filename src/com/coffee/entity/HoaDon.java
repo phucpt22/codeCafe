@@ -12,7 +12,6 @@ import java.util.Date;
 public class HoaDon {
     
     String MaHD;
-    String MaSP;
     String TenKH;
     String MaNV;
     Date NgayTao = XDate.now();
@@ -23,7 +22,6 @@ public class HoaDon {
 
     public HoaDon(String MaHD, String MaSP, String TenKH, String MaNV, String gioDat) {
         this.MaHD = MaHD;
-        this.MaSP = MaSP;
         this.TenKH = TenKH;
         this.MaNV = MaNV;
         this.gioDat = gioDat;
@@ -37,13 +35,6 @@ public class HoaDon {
         this.MaHD = MaHD;
     }
 
-    public String getMaSP() {
-        return MaSP;
-    }
-
-    public void setMaSP(String MaSP) {
-        this.MaSP = MaSP;
-    }
 
     public String getTenKH() {
         return TenKH;

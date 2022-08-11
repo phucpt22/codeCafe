@@ -11,6 +11,7 @@ import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
 import com.coffee.utils.XImage;
 import com.coffee.utils.utilityHelper;
+import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 
@@ -39,8 +40,23 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String manv = txtUser.getText();
         String matkhau = new String(txtPass.getPassword());
         NhanVien nhanVien = dao.selectById(manv);
-        Auth.user = nhanVien;
-        this.dispose();
+        if(utilityHelper.checkNullTK(txtUser) && 
+                utilityHelper.checkNullMK(txtPass)){
+            if(nhanVien == null){
+                MsgBox.alert(this, "Tài khoản không tồn tại !");
+                txtUser.requestFocus();
+                txtUser.setBackground(pink);
+            }
+            else if(!matkhau.equals(nhanVien.getMatKhau())){
+                MsgBox.alert(this, "Mật khẩu không đúng !");
+                txtPass.requestFocus();
+                txtPass.setBackground(pink);
+            }else{
+                Auth.user = nhanVien;
+                this.dispose();
+            }
+        }
+       
     }
     void ketThuc(){
         if(MsgBox.confirm(this, "Bạn muốn kết thúc ứng dụng?")){
@@ -298,27 +314,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        String manv = txtUser.getText();
-        String matkhau = new String(txtPass.getPassword());
-        NhanVien nhanVien = dao.selectById(manv);
-        txtUser.setBackground(white);
-        txtPass.setBackground(white);
-        if(utilityHelper.checkNullText(txtUser) && 
-                utilityHelper.checkNullPass(txtPass)){
-            if(nhanVien == null){
-                MsgBox.alert(this, "Tài khoản không tồn tại !");
-                txtUser.requestFocus();
-                txtUser.setBackground(pink);
-            }
-            else if(!matkhau.equals(nhanVien.getMatKhau())){
-                MsgBox.alert(this, "Mật khẩu không đúng !");
-                txtPass.requestFocus();
-                txtPass.setBackground(pink);
-            }
-            else{
-               dangNhap(); 
-            }
-        }  
+        dangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed

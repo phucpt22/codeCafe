@@ -5,6 +5,7 @@
  */
 package com.coffee.utils;
 
+import java.awt.Color;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.text.ParseException;
@@ -19,35 +20,6 @@ import javax.swing.JTextField;
  */
 public class utilityHelper {
 
-    public static String getRank(double diem) {
-        String xepLoai = "Xuất sắc";
-        if (diem < 0) {
-            xepLoai = "Chưa nhập";
-
-        } else if (diem < 3) {
-            xepLoai = "Kém";
-
-        } else if (diem < 5) {
-            xepLoai = "Yếu";
-
-        } else if (diem < 6.5) {
-
-            xepLoai = "Trung bình";
-
-        } else if (diem < 7.5) {
-            xepLoai = "Khá";
-
-        } else if (diem < 9) {
-            xepLoai = "Giỏi";
-
-        }
-        return xepLoai;
-    }
-
-    /*
-    1-10 kí tự
-    a-z, A-Z, 0-9
-     */
     public static boolean checkMaNV(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
@@ -178,12 +150,12 @@ public class utilityHelper {
     public static boolean checkTenCD(JTextField txt) {
         txt.setBackground(white);
         String id = txt.getText();
-        String rgx = ".{3,50}";
+        String rgx = ".{2,50}";
         if (id.matches(rgx)) {
             return true;
         } else {
             txt.setBackground(pink);
-            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải từ 3-50 kí tự.");
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " phải từ 2-50 kí tự.");
             txt.requestFocus();
             return false;
         }
@@ -308,6 +280,17 @@ public class utilityHelper {
             return false;
         }
     }
+    public static boolean checkNullTK(JTextField txt) {
+        txt.setBackground(new Color(233,225,193));
+        if (txt.getText().trim().length() > 0) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống !" );
+            txt.requestFocus();
+            return false;
+        }
+    }
 
     public static boolean checkNullText(JTextArea txt) {
         txt.setBackground(white);
@@ -320,9 +303,19 @@ public class utilityHelper {
             return false;
         }
     }
-
     public static boolean checkNullPass(JPasswordField txt) {
         txt.setBackground(white);
+        if (txt.getPassword().length > 0) {
+            return true;
+        } else {
+            txt.setBackground(pink);
+            MsgBox.alert(txt.getRootPane(), txt.getToolTipText() + " không được để trống !" );
+            txt.requestFocus();
+            return false;
+        }
+    }
+    public static boolean checkNullMK(JPasswordField txt) {
+        txt.setBackground(new Color(233,225,193));
         if (txt.getPassword().length > 0) {
             return true;
         } else {
