@@ -722,117 +722,6 @@ public class TinhTienJDialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void btn_DeleteHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteHDActionPerformed
-        int index = tblBill.getRowCount();
-        if(index <= -1){
-            MsgBox.alert(this, "Chưa chọn xóa");
-        }else{
-            arrayct.remove(index);
-            index = -1;
-            JOptionPane.showMessageDialog(this, "Xóa thành công");
-            chenDuLieuVaoTable();
-        }
-    }//GEN-LAST:event_btn_DeleteHDActionPerformed
-
-    private void btn_AddHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddHDActionPerformed
-
-        loadDuLieuVao();
-        chenDuLieuVaoTable();
-        spinerSoLuong.setValue(1);
-    }//GEN-LAST:event_btn_AddHDActionPerformed
-
-    private void spinerSoLuongStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinerSoLuongStateChanged
-        int n;
-        n = (Integer) spinerSoLuong.getValue();
-        double a = Double.parseDouble(lblGia.getText());
-        lblThanhTien.setText(String.valueOf(a * n));
-    }//GEN-LAST:event_spinerSoLuongStateChanged
-
-    private void cboTenBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenBanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboTenBanActionPerformed
-
-    private void rdoSizeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSizeMActionPerformed
-        int index = listTenSP.getSelectedIndex();
-        List<SanPham> list = daoSP.selectAll();
-        lblGia.setText(String.valueOf(list.get(index).getGia()));
-    }//GEN-LAST:event_rdoSizeMActionPerformed
-
-    private void rdoSizeLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSizeLActionPerformed
-        int index = listTenSP.getSelectedIndex();
-        List<SanPham> list = daoSP.selectAll();
-        double giathem = 10000;
-        lblGia.setText(String.valueOf(list.get(index).getGia()+giathem));
-
-    }//GEN-LAST:event_rdoSizeLActionPerformed
-
-    private void listTenSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseClicked
-        if (evt.getClickCount() == 1) {
-            int index = listTenSP.getSelectedIndex();
-            List<SanPham> list = daoSP.selectAll();
-            lblTenSP.setText(list.get(index).getTenSP());
-            lblGia.setText(String.valueOf(list.get(index).getGia()));
-            lblMaSP.setText(list.get(index).getMaSP());
-        }
-    }//GEN-LAST:event_listTenSPMouseClicked
-
-    private void listTenSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listTenSPMouseEntered
-
-    private void txtTienNhanCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienNhanCaretUpdate
-
-    }//GEN-LAST:event_txtTienNhanCaretUpdate
-
-    private void txtTienNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienNhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTienNhanActionPerformed
-
-    private void txtTienThuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienThuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTienThuaActionPerformed
-
-    private void txtTongcongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongcongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongcongActionPerformed
-
-    private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtThanhTienActionPerformed
-    HoaDonDAO daohd = new HoaDonDAO();
-    HoaDon getModelHD(){
-       HoaDon hd = new HoaDon();
-       
-       return hd; 
-    }
-    void insertSP() {
-        HoaDon model = getModelHD();
-        
-
-                daohd.insert(model);
-     
-    }
-    private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
-        
-        for(ChiTietHoaDon ct : arrayct){
-            daoct.insert(ct);
-        }
-        
-    
-    
-//        try {
-//            JasperReport rpt = JasperCompileManager.compileReport("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QLCafe\\src\\com\\coffee\\ui\\HoaDon.jrxml");
-//            String user = "sa";
-//            String pass = "123";
-//            String url = "jdbc:sqlserver://localhost:1433;database=DuAn1";
-//            Connection conn = DriverManager.getConnection(url, user, pass);
-//            JasperPrint p = JasperFillManager.fillReport(rpt, null, conn);
-//            JasperViewer.viewReport(p, false);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    }//GEN-LAST:event_btnInActionPerformed
-
     private void tblBillMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBillMousePressed
         if (evt.getClickCount() == 1) {
             this.index = tblBill.rowAtPoint(evt.getPoint());
@@ -846,6 +735,114 @@ public class TinhTienJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaHoaDonActionPerformed
 
+    private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
+
+        for(ChiTietHoaDon ct : arrayct){
+            daoct.insert(ct);
+        }
+
+        //        try {
+            //            JasperReport rpt = JasperCompileManager.compileReport("C:\\Users\\phucl\\OneDrive\\Documents\\NetBeansProjects\\QLCafe\\src\\com\\coffee\\ui\\HoaDon.jrxml");
+            //            String user = "sa";
+            //            String pass = "123";
+            //            String url = "jdbc:sqlserver://localhost:1433;database=DuAn1";
+            //            Connection conn = DriverManager.getConnection(url, user, pass);
+            //            JasperPrint p = JasperFillManager.fillReport(rpt, null, conn);
+            //            JasperViewer.viewReport(p, false);
+            //        } catch (Exception e) {
+            //            e.printStackTrace();
+            //        }
+    }//GEN-LAST:event_btnInActionPerformed
+
+    private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThanhTienActionPerformed
+
+    private void txtTongcongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongcongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTongcongActionPerformed
+
+    private void txtTienThuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienThuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTienThuaActionPerformed
+
+    private void txtTienNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienNhanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTienNhanActionPerformed
+
+    private void txtTienNhanCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienNhanCaretUpdate
+
+    }//GEN-LAST:event_txtTienNhanCaretUpdate
+
+    private void listTenSPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listTenSPMouseEntered
+
+    private void listTenSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listTenSPMouseClicked
+        if (evt.getClickCount() == 1) {
+            int index = listTenSP.getSelectedIndex();
+            List<SanPham> list = daoSP.selectAll();
+            lblTenSP.setText(list.get(index).getTenSP());
+            lblGia.setText(String.valueOf(list.get(index).getGia()));
+            lblMaSP.setText(list.get(index).getMaSP());
+        }
+    }//GEN-LAST:event_listTenSPMouseClicked
+
+    private void rdoSizeLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSizeLActionPerformed
+        int index = listTenSP.getSelectedIndex();
+        List<SanPham> list = daoSP.selectAll();
+        double giathem = 10000;
+        lblGia.setText(String.valueOf(list.get(index).getGia()+giathem));
+    }//GEN-LAST:event_rdoSizeLActionPerformed
+
+    private void rdoSizeMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSizeMActionPerformed
+        int index = listTenSP.getSelectedIndex();
+        List<SanPham> list = daoSP.selectAll();
+        lblGia.setText(String.valueOf(list.get(index).getGia()));
+    }//GEN-LAST:event_rdoSizeMActionPerformed
+
+    private void cboTenBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenBanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTenBanActionPerformed
+
+    private void spinerSoLuongStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinerSoLuongStateChanged
+        int n;
+        n = (Integer) spinerSoLuong.getValue();
+        double a = Double.parseDouble(lblGia.getText());
+        lblThanhTien.setText(String.valueOf(a * n));
+    }//GEN-LAST:event_spinerSoLuongStateChanged
+
+    private void btn_AddHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddHDActionPerformed
+
+        loadDuLieuVao();
+        chenDuLieuVaoTable();
+        spinerSoLuong.setValue(1);
+    }//GEN-LAST:event_btn_AddHDActionPerformed
+
+    private void btn_DeleteHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteHDActionPerformed
+        int index = tblBill.getRowCount();
+        if(index <= -1){
+            MsgBox.alert(this, "Chưa chọn xóa");
+        }else{
+            arrayct.remove(index);
+            index = -1;
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            chenDuLieuVaoTable();
+        }
+    }//GEN-LAST:event_btn_DeleteHDActionPerformed
+    HoaDonDAO daohd = new HoaDonDAO();
+    HoaDon getModelHD(){
+       HoaDon hd = new HoaDon();
+       
+       return hd; 
+    }
+    void insertSP() {
+        HoaDon model = getModelHD();
+        
+
+                daohd.insert(model);
+     
+    }
     /**
      * @param args the command line arguments
      */
